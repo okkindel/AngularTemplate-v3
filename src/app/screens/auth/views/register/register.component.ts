@@ -6,8 +6,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthRepository } from '@api/auth/auth.repository';
 import { ActivatedRoute, Router } from '@angular/router';
 import { clearToken, setToken } from '@shared/utils';
-import { Component } from '@angular/core';
 import { RegisterRequest } from '@api/auth/models';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'prj-register',

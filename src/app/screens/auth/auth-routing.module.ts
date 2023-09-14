@@ -1,7 +1,4 @@
-import {
-  RegisterComponent,
-  LoginComponent,
-} from './views';
+import { RegisterComponent, LoginComponent } from './views';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 

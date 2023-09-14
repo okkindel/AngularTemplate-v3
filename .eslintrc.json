@@ -1,6 +1,5 @@
 {
   "root": true,
-  "ignorePatterns": ["projects/**/*"],
   "overrides": [
     {
       "files": ["*.ts"],
@@ -46,6 +45,7 @@
           }
         ],
 
+        "prettier/prettier": "warn",
         "spaced-comment": ["error", "always", { "exceptions": ["*"] }],
         "no-console": ["warn", { "allow": ["warn", "error", "info"] }],
         "quotes": ["warn", "single"],
@@ -53,8 +53,7 @@
         "prefer-const": "warn",
         "no-eq-null": "warn",
         "eqeqeq": "warn",
-        "no-var": "warn",
-        "prettier/prettier": "warn"
+        "no-var": "warn"
       }
     },
     {

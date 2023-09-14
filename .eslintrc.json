@@ -1,0 +1,66 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "plugins": ["prettier"],
+      "rules": {
+        "@angular-eslint/no-empty-lifecycle-method": ["warn"],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "prj",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "prj",
+            "style": "kebab-case"
+          }
+        ],
+
+        "@typescript-eslint/explicit-function-return-type": ["warn"],
+        "@typescript-eslint/no-non-null-assertion": ["off"],
+        "@typescript-eslint/no-inferrable-types": ["off"],
+        "@typescript-eslint/no-empty-function": ["off"],
+        "@typescript-eslint/explicit-member-accessibility": [
+          "warn",
+          {
+            "overrides": {
+              "constructors": "no-public"
+            }
+          }
+        ],
+
+        "spaced-comment": ["error", "always", { "exceptions": ["*"] }],
+        "no-console": ["warn", { "allow": ["warn", "error", "info"] }],
+        "quotes": ["warn", "single"],
+        "no-trailing-spaces": "warn",
+        "prefer-const": "warn",
+        "no-eq-null": "warn",
+        "eqeqeq": "warn",
+        "no-var": "warn",
+        "prettier/prettier": "warn"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {}
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+<form (submit)="onSubmit()" [formGroup]="form">
+  <input
+    pInputText
+    [placeholder]="'PASSWORD' | translate"
+    formControlName="password"
+    type="password"
+  />
+
+  <input
+    pInputText
+    [placeholder]="'REPEAT_PASSWORD' | translate"
+    formControlName="repassword"
+    type="password"
+  />
+
+  <button type="submit">CONFIRM</button>
+</form>

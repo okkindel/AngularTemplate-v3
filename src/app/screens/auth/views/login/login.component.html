@@ -1,0 +1,11 @@
+<form (submit)="onSubmit()" [formGroup]="form">
+  <input [placeholder]="'EMAIL' | translate" formControlName="email" />
+
+  <input
+    [placeholder]="'PASSWORD' | translate"
+    formControlName="password"
+    type="password"
+  />
+
+  <button type="submit">SIGN IN</button>
+</form>

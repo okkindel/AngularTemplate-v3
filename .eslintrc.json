@@ -15,23 +15,6 @@
       "plugins": ["prettier"],
       "rules": {
         "@angular-eslint/no-empty-lifecycle-method": ["warn"],
-        "@angular-eslint/directive-selector": [
-          "error",
-          {
-            "type": "attribute",
-            "prefix": "prj",
-            "style": "camelCase"
-          }
-        ],
-        "@angular-eslint/component-selector": [
-          "error",
-          {
-            "type": "element",
-            "prefix": "prj",
-            "style": "kebab-case"
-          }
-        ],
-
         "@typescript-eslint/explicit-function-return-type": ["warn"],
         "@typescript-eslint/no-non-null-assertion": ["off"],
         "@typescript-eslint/no-inferrable-types": ["off"],

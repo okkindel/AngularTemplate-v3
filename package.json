@@ -44,6 +44,7 @@
     "postcss": "^8.4.27",
     "prettier": "^3.0.3",
     "prettier-eslint": "^15.0.1",
+    "prettier-plugin-sort-imports": "^1.7.2",
     "prettier-plugin-tailwindcss": "^0.5.4",
     "tailwindcss": "^3.3.3",
     "typescript": "~5.0.2"

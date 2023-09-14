@@ -1,18 +1,18 @@
 import { LoaderService } from './loader.service';
-import { Component } from '@angular/core';
 import { Observable, debounceTime } from 'rxjs';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'prj-loader',
   template: `
     <div
-      class="h-full left-0 fixed w-full top-0 bg-black bg-opacity-50 flex justify-center items-center"
+      class="fixed left-0 top-0 flex h-full w-full items-center justify-center bg-black bg-opacity-50"
       [hidden]="(overlayBlocked$ | async) === false"
     >
       <!-- TODO: loader -->
       <svg
         aria-hidden="true"
-        class="inline w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+        class="mr-2 inline h-8 w-8 animate-spin fill-blue-600 text-gray-200 dark:text-gray-600"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 100 101"
         fill="none"

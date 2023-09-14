@@ -32,6 +32,9 @@ const inputVariants = cva(
       error: {
         true: 'border-red-300 bg-red-50 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500',
       },
+      disabled: {
+        true: 'cursor-not-allowed bg-gray-100 text-gray-500',
+      },
     },
     defaultVariants: {
       mode: 'default',
@@ -40,21 +43,27 @@ const inputVariants = cva(
     },
   },
 );
-type InputVariant = VariantProps<typeof inputVariants>;
+type Variant = VariantProps<typeof inputVariants>;
 
 @Directive({
   selector: 'input[prjInput]',
 })
 export class InputDirective implements DoCheck, AfterViewInit {
-  @Input({ transform: booleanAttribute }) public error: InputVariant['error'];
+  @Input({ transform: booleanAttribute }) public disabled: Variant['disabled'];
+  @Input({ transform: booleanAttribute }) public error: Variant['error'];
   @Input({ transform: booleanAttribute }) public required?: boolean;
-  @Input() public mode: InputVariant['mode'];
-  @Input() public size: InputVariant['size'];
+  @Input() public mode: Variant['mode'];
+  @Input() public size: Variant['size'];
 
   public filled: boolean = false;
 
   @HostBinding('class') public get classes(): string {
     return twMerge(inputVariants(this));
+  }
+
+  @HostListener('input', ['$event'])
+  public onInput(): void {
+    this.updateState();
   }
 
   constructor(
@@ -72,12 +81,8 @@ export class InputDirective implements DoCheck, AfterViewInit {
     this.updateState();
   }
 
-  @HostListener('input', ['$event'])
-  public onInput(): void {
-    this.updateState();
-  }
-
   public updateState(): void {
+    this.disabled = this._hasDisabledState();
     this.filled = this._hasValueInside();
     this.error = this._hasErrorState();
     this._placePlaceholderValue();
@@ -93,6 +98,10 @@ export class InputDirective implements DoCheck, AfterViewInit {
         this._el.nativeElement.placeholder += ' *';
       }
     }
+  }
+
+  private _hasDisabledState(): boolean {
+    return !!this._el.nativeElement.disabled;
   }
 
   private _hasValueInside(): boolean {

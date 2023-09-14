@@ -29,12 +29,12 @@ const buttonVariants = cva(
   },
 );
 
-type ButtonVariant = VariantProps<typeof buttonVariants>;
+type Variant = VariantProps<typeof buttonVariants>;
 
 @Directive({ selector: 'button[prjButton]' })
 export class ButtonDirective {
-  @Input() public variant: ButtonVariant['mode'];
-  @Input() public size: ButtonVariant['size'];
+  @Input() public variant: Variant['mode'];
+  @Input() public size: Variant['size'];
 
   @HostBinding('class') public get classes(): string {
     return twMerge(buttonVariants(this));

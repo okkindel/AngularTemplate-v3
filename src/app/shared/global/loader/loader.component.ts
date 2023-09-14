@@ -7,9 +7,8 @@ import { Component } from '@angular/core';
   template: `
     <div
       class="fixed left-0 top-0 flex h-full w-full items-center justify-center bg-black bg-opacity-50"
-      [hidden]="(overlayBlocked$ | async) === false"
+      *ngIf="!!(overlayBlocked$ | async)"
     >
-      <!-- TODO: loader -->
       <svg
         aria-hidden="true"
         class="mr-2 inline h-8 w-8 animate-spin fill-blue-600 text-gray-200 dark:text-gray-600"

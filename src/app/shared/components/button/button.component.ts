@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input } from '@angular/core';
+import { Directive, HostBinding, Input } from '@angular/core';
 import { VariantProps, cva } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
 
@@ -31,8 +31,8 @@ const buttonVariants = cva(
 
 type ButtonVariant = VariantProps<typeof buttonVariants>;
 
-@Component({ selector: 'button[prjButton]', template: '<ng-content/>' })
-export class ButtonComponent {
+@Directive({ selector: 'button[prjButton]' })
+export class ButtonDirective {
   @Input() public variant: ButtonVariant['mode'];
   @Input() public size: ButtonVariant['size'];
 

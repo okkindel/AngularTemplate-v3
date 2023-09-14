@@ -1,5 +1,6 @@
 import {
   ChangeDetectorRef,
+  booleanAttribute,
   AfterViewInit,
   HostListener,
   HostBinding,
@@ -10,7 +11,7 @@ import {
   Input,
 } from '@angular/core';
 import { VariantProps, cva } from 'class-variance-authority';
-import { NgModel } from '@angular/forms';
+import { NgControl, Validators } from '@angular/forms';
 import { twMerge } from 'tailwind-merge';
 
 const inputVariants = cva(
@@ -20,8 +21,6 @@ const inputVariants = cva(
       mode: {
         default:
           'border-gray-300 bg-white focus:border-indigo-500 focus:ring-indigo-500',
-        error:
-          'border-red-300 bg-red-50 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500',
         outline:
           'border-gray-300 bg-white focus:border-indigo-500 focus:ring-indigo-500',
       },
@@ -30,14 +29,14 @@ const inputVariants = cva(
         sm: 'h-9 rounded-md px-2',
         lg: 'h-12 rounded-md px-4 text-base',
       },
-      filled: {
-        true: 'placeholder-transparent',
-        false: 'placeholder-gray-400',
+      error: {
+        true: 'border-red-300 bg-red-50 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500',
       },
     },
     defaultVariants: {
       mode: 'default',
       size: 'default',
+      error: false,
     },
   },
 );
@@ -47,6 +46,8 @@ type InputVariant = VariantProps<typeof inputVariants>;
   selector: 'input[prjInput]',
 })
 export class InputDirective implements DoCheck, AfterViewInit {
+  @Input({ transform: booleanAttribute }) public error: InputVariant['error'];
+  @Input({ transform: booleanAttribute }) public required?: boolean;
   @Input() public mode: InputVariant['mode'];
   @Input() public size: InputVariant['size'];
 
@@ -57,29 +58,49 @@ export class InputDirective implements DoCheck, AfterViewInit {
   }
 
   constructor(
-    public el: ElementRef,
-    @Optional() public ngModel: NgModel,
-    private cd: ChangeDetectorRef,
+    @Optional() private readonly _ngControl: NgControl,
+    private readonly _cd: ChangeDetectorRef,
+    private readonly _el: ElementRef,
   ) {}
 
   public ngAfterViewInit(): void {
-    this.updateFilledState();
-    this.cd.detectChanges();
+    this.updateState();
+    this._cd.detectChanges();
   }
 
   public ngDoCheck(): void {
-    this.updateFilledState();
+    this.updateState();
   }
 
   @HostListener('input', ['$event'])
   public onInput(): void {
-    this.updateFilledState();
+    this.updateState();
   }
 
-  public updateFilledState(): void {
-    this.filled = !!(
-      (this.el.nativeElement.value && this.el.nativeElement.value.length) ||
-      (this.ngModel && this.ngModel.model)
-    );
+  public updateState(): void {
+    this.filled = this._hasValueInside();
+    this.error = this._hasErrorState();
+    this._placePlaceholderValue();
+  }
+
+  private _placePlaceholderValue(): void {
+    if (
+      this._ngControl?.control?.hasValidator(Validators.required) ||
+      this.required
+    ) {
+      const placeholderValue: string = this._el.nativeElement.placeholder;
+      if (placeholderValue && !placeholderValue.endsWith('*')) {
+        this._el.nativeElement.placeholder += ' *';
+      }
+    }
+  }
+
+  private _hasValueInside(): boolean {
+    return !!this._el.nativeElement.value.length;
+  }
+
+  private _hasErrorState(): boolean {
+    if (!this._ngControl) return !!this.error;
+    return !!(this._ngControl?.touched && this._ngControl?.invalid);
   }
 }

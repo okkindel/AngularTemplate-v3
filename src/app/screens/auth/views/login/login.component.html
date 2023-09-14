@@ -1,15 +1,10 @@
 <form (submit)="onSubmit()" [formGroup]="form">
-  <input
-    [placeholder]="'EMAIL' | translate"
-    formControlName="email"
-    prjInput
-  />
+  <input [placeholder]="'EMAIL' | translate" formControlName="email" prjInput />
 
   <input
     [placeholder]="'PASSWORD' | translate"
     formControlName="password"
     type="password"
-    mode="error"
     prjInput
   />
 

@@ -10,6 +10,8 @@ import { setToken } from '@shared/utils';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+  public email: string = '23';
+
   public form = new FormGroup({
     email: new FormControl('', {
       validators: [Validators.required, Validators.email],

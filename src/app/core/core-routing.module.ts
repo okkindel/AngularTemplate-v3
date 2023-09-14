@@ -20,17 +20,15 @@ const routes: Routes = [
         loadChildren: () =>
           import('../screens/home/home.module').then((m) => m.HomeModule),
       },
-      // {
-      //   path: 'admin',
-      //   canActivate: [RoleGuard],
-      //   data: {
-      //     roles: [Role.ADMIN],
-      //   },
-      //   // loadChildren: () =>
-      //   //   import('../screens/companies/companies.module').then(
-      //   //     (m) => m.CompaniesModule,
-      //   //   ),
-      // },
+      {
+        path: 'admin',
+        canActivate: [RoleGuard],
+        data: {
+          roles: [Role.ADMIN],
+        },
+        loadChildren: () =>
+          import('../screens/admin/admin.module').then((m) => m.AdminModule),
+      },
       {
         path: 'page-not-found',
         component: NotFoundComponent,

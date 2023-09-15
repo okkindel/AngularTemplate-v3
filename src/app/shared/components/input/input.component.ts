@@ -15,14 +15,16 @@ import { NgControl, Validators } from '@angular/forms';
 import { twMerge } from 'tailwind-merge';
 
 const inputVariants = cva(
-  'block w-full rounded-md shadow-sm transition duration-150 ease-in-out sm:text-sm sm:leading-5',
+  'block w-full rounded-md border shadow-sm transition duration-150 ease-in-out sm:text-sm sm:leading-5',
   {
     variants: {
       mode: {
         default:
-          'border-gray-300 bg-white focus:border-indigo-500 focus:ring-indigo-500',
+          'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500',
+        secondary:
+          'border-gray-400 focus:border-indigo-500 focus:ring-indigo-500',
         outline:
-          'border-gray-300 bg-white focus:border-indigo-500 focus:ring-indigo-500',
+          'border-transparent focus:border-indigo-500 focus:ring-indigo-500',
       },
       size: {
         default: 'h-10 px-3',
@@ -30,10 +32,10 @@ const inputVariants = cva(
         lg: 'h-12 rounded-md px-4 text-base',
       },
       error: {
-        true: 'border-red-300 bg-red-50 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500',
+        true: 'border-red-500 text-red-900 placeholder-red-300 focus:border-red-500 focus:ring-red-500',
       },
       disabled: {
-        true: 'cursor-not-allowed bg-gray-100 text-gray-500',
+        true: 'cursor-not-allowed bg-gray-100',
       },
     },
     defaultVariants: {
@@ -94,7 +96,7 @@ export class InputDirective implements DoCheck, AfterViewInit {
       this.required
     ) {
       const placeholderValue: string = this._el.nativeElement.placeholder;
-      if (placeholderValue && !placeholderValue.endsWith('*')) {
+      if (placeholderValue && !placeholderValue.endsWith(' *')) {
         this._el.nativeElement.placeholder += ' *';
       }
     }

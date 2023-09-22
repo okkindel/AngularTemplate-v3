@@ -33,7 +33,7 @@ type Variant = VariantProps<typeof buttonVariants>;
 
 @Directive({ selector: 'button[prjButton]' })
 export class ButtonDirective {
-  @Input() public variant: Variant['mode'];
+  @Input() public mode: Variant['mode'];
   @Input() public size: Variant['size'];
 
   @HostBinding('class') public get classes(): string {

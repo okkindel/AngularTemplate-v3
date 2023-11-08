@@ -1,18 +1,14 @@
-import { ButtonDirective, InputDirective } from '@shared/components';
-import { HasRoleDirective, VarDirective } from '@shared/directives';
-import { LocalizedDatePipe, TruncatePipe } from '@shared/pipes';
-import { LoaderComponent } from '@shared/global/loader';
 import { TranslateModule } from '@ngx-translate/core';
+import { ToastrModule } from 'ngx-toastr';
 
-export const SHARED_DIRECTIVES = [
-  HasRoleDirective,
-  ButtonDirective,
-  InputDirective,
-  VarDirective,
-];
+import { HasPermissionDirective, HasRoleDirective } from '../directives';
+import { LoaderComponent } from '../global/loader/loader.component';
+import { LocalizedDatePipe, TruncatePipe } from '../pipes';
 
-export const SHARED_PIPES = [TruncatePipe, LocalizedDatePipe];
+export const SHARED_MODULES = [TranslateModule, ToastrModule];
+
+export const SHARED_DIRECTIVES = [HasPermissionDirective, HasRoleDirective];
+
+export const SHARED_PIPES = [LocalizedDatePipe, TruncatePipe];
 
 export const SHARED_COMPONENTS = [LoaderComponent];
-
-export const SHARED_MODULES = [TranslateModule];

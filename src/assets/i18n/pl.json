@@ -1,1 +1,18 @@
-{}
+{
+  "ADMIN_PANEL": "Panel Administratora",
+  "DASHBOARD": "Dashboard",
+  "EMAIL": "E-mail",
+  "HELLO": "Witaj świecie!",
+  "HOME": "Home",
+  "LOGIN": "Login",
+  "LOGOUT": "Wyloguj",
+  "LOG_IN": "Zaloguj się",
+  "LOG_IN_SUCCESS": "Zostałeś pomyślnie zalogowany",
+  "LOG_OUT_SUCCESS": "Zostałeś pomyślnie wylogowany",
+  "PASSWORD": "Hasło",
+  "PROFILE": "Profil",
+  "SIGN_OUT": "Wyloguj",
+  "USERS_MANAGEMENT": "Zarządzaj użytkownikami",
+  "USER_PANEL": "Panel użytkownika",
+  "USER_PROFILE": "Profil użytkownika"
+}

@@ -1,7 +1,8 @@
-import { LocalizationServiceConfig } from './localization-config.service';
 import { Injectable, Optional, SkipSelf } from '@angular/core';
-import { catchError, NEVER, Observable, tap } from 'rxjs';
+import { catchError, Observable, NEVER, tap } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+
+import { LocalizationServiceConfig } from './localization-config.service';
 import { DEFAULT_LANGUAGE } from '../constant';
 import { Language } from '../models';
 
@@ -10,11 +11,11 @@ export class LocalizationService {
   private _localeId: Language = DEFAULT_LANGUAGE;
 
   constructor(
-    @Optional() @SkipSelf() private singleton: LocalizationService,
+    @Optional() @SkipSelf() private _singleton: LocalizationService,
     private readonly _translateService: TranslateService,
     private readonly _config: LocalizationServiceConfig,
   ) {
-    if (this.singleton) {
+    if (this._singleton) {
       throw new Error('Service is already provided by the root module');
     }
     this._localeId = this._config.locale_id as Language;

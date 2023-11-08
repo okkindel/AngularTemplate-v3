@@ -4,16 +4,16 @@ import {
   LOCALE_ID,
   NgModule,
 } from '@angular/core';
-import { LocalizationService, LocalizationServiceConfig } from './services';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { CommonModule, registerLocaleData } from '@angular/common';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { registerLocaleData, CommonModule } from '@angular/common';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { I18nConfig } from './models';
-import { Observable } from 'rxjs';
-
 import LOCALE_EN from '@angular/common/locales/en';
 import LOCALE_PL from '@angular/common/locales/pl';
+import { Observable } from 'rxjs';
+
+import { LocalizationServiceConfig, LocalizationService } from './services';
+import { I18nConfig } from './models';
 
 registerLocaleData(LOCALE_PL, 'pl');
 registerLocaleData(LOCALE_EN, 'en');

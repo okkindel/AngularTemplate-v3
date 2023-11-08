@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'prj-root',
+  selector: 'app-root',
   template: `
-    <prj-loader />
+    <app-loader />
     <router-outlet />
   `,
   styles: [':host { height: 100vh; display: block; }'],

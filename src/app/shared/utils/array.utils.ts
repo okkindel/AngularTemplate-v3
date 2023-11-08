@@ -17,7 +17,7 @@ const removeAt = <T>(array: T[], index: number): T[] => array.splice(index, 1);
 const at = (data: string, index: number): number => Number(data[index]);
 
 // isNotEmpty(["foo", "bar"]) => true
-const isNotEmpty = <T>(array: T[] | null | undefined): array is T[] =>
+const isNotEmpty = <T>(array: undefined | null | T[]): array is T[] =>
   !!(!!array && array.length);
 
 // haveOverlap(["foo", "bar"], ["foo"]) => true
@@ -30,7 +30,7 @@ const arraysEqual = <T>(array1: T[], array2: T[]): boolean => {
 };
 
 // createArray(3, 0) => [0, 1, 2]
-const createArray = (len: number, initialValue: number = 0): number[] => {
+const createArray = (len: number, initialValue = 0): number[] => {
   return [...Array(len).keys()].map((e) => e + initialValue);
 };
 
@@ -42,7 +42,7 @@ const sortById = <T extends { id: number }>(array: T[]): T[] =>
 const sort = <T>(
   array: T[],
   callback: (el: T) => string | number,
-  order: 'asc' | 'desc' = 'asc',
+  order: 'desc' | 'asc' = 'asc',
 ): T[] =>
   [...array].sort((a, b) =>
     callback(a) < callback(b)

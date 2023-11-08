@@ -1,19 +1,9 @@
-import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import { ViewContainerRef, TemplateRef, Directive, Input } from '@angular/core';
 
 @Directive({
-  selector: '[prjVar]',
+  selector: '[appVar]',
 })
 export class VarDirective {
-  @Input()
-  public set prjVar(context: unknown) {
-    this._context.$implicit = this._context.prjVar = context;
-
-    if (!this._hasView) {
-      this._vcRef.createEmbeddedView(this._templateRef, this._context);
-      this._hasView = true;
-    }
-  }
-
   private readonly _context: {
     $implicit: unknown;
     prjVar: unknown;
@@ -28,4 +18,14 @@ export class VarDirective {
     private readonly _templateRef: TemplateRef<unknown>,
     private readonly _vcRef: ViewContainerRef,
   ) {}
+
+  @Input()
+  public set prjVar(context: unknown) {
+    this._context.$implicit = this._context.prjVar = context;
+
+    if (!this._hasView) {
+      this._vcRef.createEmbeddedView(this._templateRef, this._context);
+      this._hasView = true;
+    }
+  }
 }

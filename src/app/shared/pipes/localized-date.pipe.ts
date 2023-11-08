@@ -1,5 +1,5 @@
 import { TranslateService } from '@ngx-translate/core';
-import { Pipe, PipeTransform } from '@angular/core';
+import { PipeTransform, Pipe } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Optional } from '@shared/models';
 

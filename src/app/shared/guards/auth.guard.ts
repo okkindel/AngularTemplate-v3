@@ -1,51 +1,53 @@
 import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
+  UrlTree,
   Router,
 } from '@angular/router';
-import { UsersRepository } from '@api/users/users.repository';
-import { clearToken, getToken } from '@shared/utils';
-import { catchError, map } from 'rxjs/operators';
-import { UserService } from '@shared/services';
+import { catchError, Observable, map, of } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+
+import { UserRepository } from '../../api/user/user.repository';
+import { clearToken, getToken } from '../utils';
+import { UserService } from '../services';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard {
   constructor(
-    private readonly _usersRepo: UsersRepository,
+    private readonly _userRepository: UserRepository,
     private readonly _userService: UserService,
     private readonly _router: Router,
   ) {}
 
   public canActivate(
-    _next: ActivatedRouteSnapshot,
+    _activatedRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot,
-  ): Observable<boolean> | boolean {
+  ): Observable<boolean | UrlTree> | boolean | UrlTree {
     const token = getToken();
+
+    // FIXME: remove this line when the backend is ready
+    return true;
+
     if (!token) {
-      this._redirectToLogin(state);
-      return false;
+      return this._router.createUrlTree(['/auth/login'], {
+        queryParams: { redirectURL: state.url },
+      });
     } else {
-      return this._usersRepo.getCurrentUserInfo().pipe(
+      return this._userRepository.getCurrentUserInfo().pipe(
         map((response) => {
           this._userService.user = response;
+
           return true;
         }),
         catchError((): Observable<boolean> => {
-          this._redirectToLogin(state);
+          this._router.navigate(['/auth/login']);
           clearToken();
+
           return of(false);
         }),
       );
     }
-  }
-
-  private _redirectToLogin(state: RouterStateSnapshot): void {
-    this._router.navigate(['/auth/login'], {
-      queryParams: { redirectURL: state.url },
-    });
   }
 }

@@ -1,9 +1,10 @@
+import { Component, inject } from '@angular/core';
+import { debounceTime, Observable } from 'rxjs';
+
 import { LoaderService } from './loader.service';
-import { Observable, debounceTime } from 'rxjs';
-import { Component } from '@angular/core';
 
 @Component({
-  selector: 'prj-loader',
+  selector: 'app-loader',
   template: `
     <div
       class="fixed left-0 top-0 flex h-full w-full items-center justify-center bg-black/50"
@@ -29,8 +30,7 @@ import { Component } from '@angular/core';
   `,
 })
 export class LoaderComponent {
-  constructor(private readonly loaderService: LoaderService) {}
-
-  public overlayBlocked$: Observable<boolean> =
-    this.loaderService.overlayBlocked$.pipe(debounceTime(50));
+  public overlayBlocked$: Observable<boolean> = inject(
+    LoaderService,
+  ).overlayBlocked$.pipe(debounceTime(50));
 }

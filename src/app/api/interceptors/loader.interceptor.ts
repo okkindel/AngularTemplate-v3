@@ -5,7 +5,7 @@ import {
   HttpEvent,
 } from '@angular/common/http';
 import { LoaderService } from '@shared/global/loader';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { finalize } from 'rxjs/operators';
 

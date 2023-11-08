@@ -1,34 +1,86 @@
-<form (submit)="onSubmit()" [formGroup]="form" class="flex flex-col gap-2">
-  <input [placeholder]="'EMAIL' | translate" formControlName="email" prjInput />
-
-  <input
-    [placeholder]="'PASSWORD' | translate"
-    formControlName="password"
-    type="password"
-    prjInput
-  />
-
-  <div class="relative">
-    <div
-      class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5"
+<div
+  class="flex min-h-full flex-col justify-center bg-white px-6 py-12 dark:bg-gray-900 lg:px-8"
+>
+  <div class="select-none sm:mx-auto sm:w-full sm:max-w-sm">
+    <img class="mx-auto h-20 w-auto" src="assets/img/logo.png" alt="Logo" />
+    <h2
+      class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-white"
     >
-      <svg
-        class="h-4 w-4 text-gray-500 dark:text-gray-400"
-        aria-hidden="true"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="currentColor"
-        viewBox="0 0 20 16"
-      >
-        <path
-          d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z"
-        />
-        <path
-          d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z"
-        />
-      </svg>
-    </div>
-    <input prjInput error class="pl-10" />
+      {{ 'LOG_IN' | translate }}
+    </h2>
   </div>
 
-  <button prjButton mode="default" type="submit">SIGN IN</button>
-</form>
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form" class="space-y-6">
+      <div>
+        <label
+          for="email"
+          class="block text-sm font-medium leading-6 text-gray-900 dark:text-white"
+        >
+          {{ 'LOGIN' | translate }}
+        </label>
+        <div class="relative mt-2 rounded-md shadow-sm">
+          <div
+            class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+          >
+            <svg
+              class="h-5 w-5 text-gray-400"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"
+              />
+              <path
+                d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"
+              />
+            </svg>
+          </div>
+          <input
+            [placeholder]="'EMAIL' | translate"
+            id="email"
+            name="email"
+            type="email"
+            autocomplete="email"
+            formControlName="email"
+            required
+            class="block w-full rounded-md border-0 py-1.5 pl-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 dark:bg-white/5 dark:text-white dark:ring-white/10 sm:text-sm sm:leading-6"
+          />
+        </div>
+      </div>
+
+      <div>
+        <div class="flex items-center justify-between">
+          <label
+            for="password"
+            class="block text-sm font-medium leading-6 text-gray-900 dark:text-white"
+          >
+            {{ 'PASSWORD' | translate }}
+          </label>
+        </div>
+        <div class="mt-2">
+          <input
+            [placeholder]="'PASSWORD' | translate"
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            formControlName="password"
+            required
+            class="block w-full rounded-md border-0 bg-white/5 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-500 dark:text-white dark:ring-white/10 sm:text-sm sm:leading-6"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button
+          type="submit"
+          class="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 dark:text-gray-900"
+        >
+          {{ 'LOG_IN' | translate }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

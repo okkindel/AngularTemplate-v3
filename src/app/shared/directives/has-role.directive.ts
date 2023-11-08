@@ -5,14 +5,15 @@ import {
   OnInit,
   Input,
 } from '@angular/core';
-import { UserService } from '@shared/services';
-import { Role } from '@shared/enums';
+
+import { UserService } from '../services';
+import { Role } from '../enums';
 
 @Directive({
-  selector: '[prjHasRole]',
+  selector: '[appHasRole]',
 })
 export class HasRoleDirective implements OnInit {
-  @Input() public prjHasRole?: Role[] | `${Role}`[] | '*';
+  @Input('appHasRole') public roles?: `${Role}`[] | Role[];
 
   constructor(
     private readonly _templateRef: TemplateRef<HTMLElement>,
@@ -21,8 +22,7 @@ export class HasRoleDirective implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.prjHasRole &&
-    (this.prjHasRole === '*' || this._userService.hasRole(this.prjHasRole))
+    this.roles && this._userService.hasRole(this.roles)
       ? this._viewContainer.createEmbeddedView(this._templateRef)
       : this._viewContainer.clear();
   }

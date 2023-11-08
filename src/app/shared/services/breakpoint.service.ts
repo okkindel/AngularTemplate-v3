@@ -1,57 +1,40 @@
-import { Injectable, HostListener } from '@angular/core';
-import { Breakpoint } from '@shared/models';
+import { BREAKPOINT } from '@shared/constant';
+import { Injectable } from '@angular/core';
+import { fromEvent, Subject } from 'rxjs';
+
+type ScreenWidth = (typeof BREAKPOINT)[keyof typeof BREAKPOINT];
 
 @Injectable({
   providedIn: 'root',
 })
 export class BreakpointService {
-  public currentBreakpoint: Breakpoint;
+  private _currentBreakpoint: ScreenWidth;
 
-  private readonly _breakpointsArr: Breakpoint[] = [
-    'xs',
-    'sm',
-    'md',
-    'lg',
-    'xl',
-    '2xl',
-  ];
+  public resizeSubject$ = new Subject<ScreenWidth>();
 
   constructor() {
-    this.currentBreakpoint = this._getCurrentBreakpoint(window.innerWidth);
+    this._currentBreakpoint = this._getCurrentBreakpoint();
+    // TODO: this is unsubscribed. Check later if we can somehow unsubscribe it.
+    fromEvent(window, 'resize').subscribe(() => this._getCurrentBreakpoint());
   }
 
-  @HostListener('window:resize', ['$event'])
-  public onResize(): void {
-    this.currentBreakpoint = this._getCurrentBreakpoint(window.innerWidth);
+  public get currentBreakpoint(): ScreenWidth {
+    return this._currentBreakpoint;
   }
 
-  public isSmallerThan(breakpoint: Breakpoint): boolean {
-    return (
-      this._breakpointsArr.indexOf(this.currentBreakpoint) <=
-      this._breakpointsArr.indexOf(breakpoint)
-    );
-  }
+  private _getCurrentBreakpoint(): ScreenWidth {
+    const oldBreakpoint = this._currentBreakpoint;
 
-  public isGreaterThan(breakpoint: Breakpoint): boolean {
-    return (
-      this._breakpointsArr.indexOf(this.currentBreakpoint) >=
-      this._breakpointsArr.indexOf(breakpoint)
-    );
-  }
+    const newBreakpoint: ScreenWidth = Object.values(BREAKPOINT)
+      .filter((breakpoint) => {
+        return window.innerWidth >= breakpoint;
+      })
+      .slice(-1)[0];
 
-  private _getCurrentBreakpoint(windowWidth: number): Breakpoint {
-    if (windowWidth >= 1536) {
-      return '2xl';
-    } else if (windowWidth >= 1280) {
-      return 'xl';
-    } else if (windowWidth >= 1024) {
-      return 'lg';
-    } else if (windowWidth >= 768) {
-      return 'md';
-    } else if (windowWidth >= 640) {
-      return 'sm';
-    } else {
-      return 'xs';
+    if (oldBreakpoint !== newBreakpoint) {
+      this._currentBreakpoint = newBreakpoint;
+      this.resizeSubject$.next(this._currentBreakpoint);
     }
+    return this._currentBreakpoint;
   }
 }

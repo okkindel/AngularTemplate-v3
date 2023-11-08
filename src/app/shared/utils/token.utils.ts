@@ -1,4 +1,4 @@
-import { Optional } from '@shared/models';
+import { Optional } from '../models';
 
 export const clearToken = (): void => {
   localStorage.setItem('token', '');

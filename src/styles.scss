@@ -2,20 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'reset';
 @import 'responsive';
 
 $application_scale_sm: 0.95rem;
 $application_scale_md: 0.9rem;
 $application_scale_2xl: 1rem;
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-}
-
 * {
   font-size: $application_scale_sm;
+
   @include responsive(md) {
     font-size: $application_scale_md;
   }

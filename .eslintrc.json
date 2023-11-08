@@ -7,33 +7,69 @@
         "project": ["tsconfig.json"],
         "createDefaultProgram": true
       },
+      "plugins": ["prettier", "perfectionist"],
       "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
-        "plugin:@typescript-eslint/recommended",
+        "plugin:perfectionist/recommended-line-length",
         "plugin:tailwindcss/recommended"
       ],
-      "plugins": ["prettier"],
       "rules": {
-        "@angular-eslint/no-empty-lifecycle-method": ["warn"],
-
-        "@typescript-eslint/explicit-function-return-type": ["warn"],
-        "@typescript-eslint/no-non-null-assertion": ["off"],
-        "@typescript-eslint/no-inferrable-types": ["off"],
-        "@typescript-eslint/no-empty-function": ["off"],
-        "@typescript-eslint/explicit-member-accessibility": [
+        "perfectionist/sort-named-imports": "warn",
+        "perfectionist/sort-interfaces": "off",
+        "perfectionist/sort-imports": "warn",
+        "perfectionist/sort-objects": "off",
+        "perfectionist/sort-enums": "warn",
+        "perfectionist/sort-classes": [
           "warn",
           {
-            "overrides": {
-              "constructors": "no-public"
-            }
+            "type": "natural",
+            "order": "asc",
+            "groups": [
+              "index-signature",
+              "static-property",
+              "private-property",
+              "property",
+              "constructor",
+              ["get-method", "set-method"],
+              "static-method",
+              "method",
+              "private-method",
+              "static-private-method",
+              "unknown"
+            ]
           }
         ],
-
+        "no-extra-boolean-cast": "off",
+        "@angular-eslint/no-empty-lifecycle-method": "warn",
+        "@angular-eslint/directive-selector": [
+          "error",
+          { "type": "attribute", "prefix": "app", "style": "camelCase" }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          { "type": "element", "prefix": "app", "style": "kebab-case" }
+        ],
+        "@typescript-eslint/naming-convention": [
+          "warn",
+          {
+            "selector": "memberLike",
+            "modifiers": ["private"],
+            "format": ["camelCase"],
+            "leadingUnderscore": "require"
+          }
+        ],
+        "@typescript-eslint/explicit-function-return-type": "warn",
+        "@typescript-eslint/no-inferrable-types": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/explicit-member-accessibility": [
+          "warn",
+          { "overrides": { "constructors": "no-public" } }
+        ],
         "spaced-comment": ["error", "always", { "exceptions": ["*"] }],
         "no-console": ["warn", { "allow": ["warn", "error", "info"] }],
-        "quotes": ["warn", "single"],
-        "no-trailing-spaces": "warn",
         "prettier/prettier": "warn",
         "prefer-const": "warn",
         "no-eq-null": "warn",
@@ -47,7 +83,9 @@
         "plugin:@angular-eslint/template/recommended",
         "plugin:tailwindcss/recommended"
       ],
-      "rules": {}
+      "rules": {
+        "tailwindcss/no-custom-classname": "off"
+      }
     }
   ]
 }

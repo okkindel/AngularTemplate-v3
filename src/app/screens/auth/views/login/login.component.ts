@@ -1,11 +1,12 @@
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { AuthRepository } from '@api/auth/auth.repository';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
 import { Component } from '@angular/core';
 import { setToken } from '@shared/utils';
 
 @Component({
-  selector: 'prj-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
@@ -22,16 +23,20 @@ export class LoginComponent {
   });
 
   constructor(
+    private readonly _translateService: TranslateService,
     private readonly _authRepo: AuthRepository,
     private readonly _route: ActivatedRoute,
+    private readonly _toast: ToastrService,
     private readonly _router: Router,
   ) {}
 
   public onSubmit(): void {
     this.form.markAllAsTouched();
+
     if (this.form.valid) {
-      this._authRepo.login(this.form.value).subscribe((response) => {
+      this._authRepo.login(this.form.getRawValue()).subscribe((response) => {
         if (!!response.token) {
+          this._toast.success(this._translateService.instant('LOG_IN_SUCCESS'));
           setToken(response.token);
           this._navigateToRedirectUrl();
         }
@@ -41,12 +46,13 @@ export class LoginComponent {
 
   private _navigateToRedirectUrl(): void {
     const redirectURL = this._route.snapshot.queryParamMap.get('redirectURL');
+
     if (redirectURL) {
       this._router
         .navigate([redirectURL])
         .catch(() => this._router.navigate(['/']));
     } else {
-      this._router.navigate(['/']);
+      this._router.navigate(['/']).then();
     }
   }
 }

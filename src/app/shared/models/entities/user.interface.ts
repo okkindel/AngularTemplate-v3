@@ -1,8 +1,9 @@
-import { Role } from '@shared/enums';
+import { Permission, Role } from '../../enums';
 
 export interface User {
+  id: string;
   email: string;
   name: string;
   role: Role;
-  id: number;
+  permissions: Permission[];
 }

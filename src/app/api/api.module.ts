@@ -1,29 +1,29 @@
-import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { DashboardRepository } from './dashboard/dashboard.repository';
-import { LoaderInterceptor } from './interceptors/loader.interceptor';
-import { TokenInterceptor } from './interceptors/token.interceptor';
-import { UsersRepository } from './users/users.repository';
-import { AuthRepository } from './auth/auth.repository';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-const REPOSITORIES = [AuthRepository, UsersRepository, DashboardRepository];
+import {
+  HttpErrorInterceptor,
+  LoaderInterceptor,
+  TokenInterceptor,
+} from './interceptors';
+import { AuthRepository } from './auth/auth.repository';
+import { UserRepository } from './user/user.repository';
+
+const REPOSITORIES = [AuthRepository, UserRepository];
 
 @NgModule({
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule],
   providers: [
     ...REPOSITORIES,
-
     {
-      useClass: TokenInterceptor,
       provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
       multi: true,
     },
-
     {
-      useClass: HttpErrorInterceptor,
       provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
       multi: true,
     },
     {

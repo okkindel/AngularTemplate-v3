@@ -1,11 +1,11 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { PipeTransform, Pipe } from '@angular/core';
 
 @Pipe({
   name: 'truncate',
 })
 export class TruncatePipe implements PipeTransform {
   public transform(
-    value: string | undefined,
+    value: string,
     limit: number,
     trail: string = '...',
   ): string {

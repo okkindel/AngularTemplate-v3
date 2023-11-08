@@ -22,14 +22,16 @@ export class UserService {
     this._user = data || undefined;
   }
 
-  public hasPermission(permissions: `${Permission}`[] | Permission[]): boolean {
+  public hasPermission(
+    permissions: (keyof typeof Permission)[] | Permission[],
+  ): boolean {
     return (
       !!this._user?.permissions &&
       this._user.permissions.some((el: Permission) => permissions.includes(el))
     );
   }
 
-  public hasRole(roles: `${Role}`[] | Role[]): boolean {
+  public hasRole(roles: (keyof typeof Role)[] | Role[]): boolean {
     return !!this._user?.role && roles.includes(this._user.role);
   }
 

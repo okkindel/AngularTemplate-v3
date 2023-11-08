@@ -14,7 +14,7 @@ import { Permission } from '../enums';
 })
 export class HasPermissionDirective implements OnInit {
   @Input('appHasPermission') public permissions?:
-    | `${Permission}`[]
+    | (keyof typeof Permission)[]
     | Permission[];
 
   constructor(

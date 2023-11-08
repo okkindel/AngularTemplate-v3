@@ -13,7 +13,7 @@ import { Role } from '../enums';
   selector: '[appHasRole]',
 })
 export class HasRoleDirective implements OnInit {
-  @Input('appHasRole') public roles?: `${Role}`[] | Role[];
+  @Input('appHasRole') public roles?: (keyof typeof Role)[] | Role[];
 
   constructor(
     private readonly _templateRef: TemplateRef<HTMLElement>,

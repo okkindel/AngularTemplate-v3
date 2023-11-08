@@ -1,27 +1,40 @@
-# Project
+# Angular App Template
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.2.
+New version of app template for hackathons etc, created with the use of modern and sexy technologies.
+
+## Features
+
+- husky
+- eslint
+- translations
+- theming
+- angular material
+- prettier
+- docker via nginx
+- toastr
+- no tests
+- strict null check
+- roles
+- jwt token
+- breadcrumbs
+
+# Code style guide:
+
+- arrange the imports from the longest to the shortest, first
+  single then multi-line
+- there are repositories in the `api` directory, we do not call API directly from the components
+- each endpoint must have a model mapping in the `api` directory
+- each directory has an `index.ts` file, we do not import directly, but only via index
+- do not do indirect imports (`/src/app`) only direct or after the `@` sign, declared in tsconfig
+- follow commit style guide (below)
+- use a pretier for formatting
+- align multi-line parameters in the constructor to the first one (we are not listening to the prettier here :|)
+- do not commit anything that causes eslint errors (`ng lint`), a husky will fire before each commit to check it
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Run `ng build-prod` to build the project. The build artifacts will be stored in the `dist/` directory. You can also use the dockerfile provided in the project

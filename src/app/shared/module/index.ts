@@ -5,6 +5,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { HasPermissionDirective, HasRoleDirective } from '../directives';
 import { LoaderComponent } from '../global/loader/loader.component';
 import { LocalizedDatePipe, TruncatePipe } from '../pipes';
+import { ButtonDirective } from '../atoms';
+
+export const SHARED_ATOMS = [ButtonDirective];
 
 export const SHARED_MODULES = [TranslateModule, ToastrModule, CommonModule];
 

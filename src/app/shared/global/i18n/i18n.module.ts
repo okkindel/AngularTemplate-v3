@@ -6,8 +6,8 @@ import {
 } from '@angular/core';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { registerLocaleData, CommonModule } from '@angular/common';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { registerLocaleData } from '@angular/common';
 import LOCALE_EN from '@angular/common/locales/en';
 import LOCALE_PL from '@angular/common/locales/pl';
 import { Observable } from 'rxjs';
@@ -25,7 +25,6 @@ export function TranslateFactory(http: HttpClient): TranslateHttpLoader {
 @NgModule({
   imports: [
     HttpClientModule,
-    CommonModule,
     TranslateModule.forRoot({
       loader: {
         useFactory: TranslateFactory,

@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { NgModule } from '@angular/core';
 
@@ -11,7 +10,7 @@ import {
 
 @NgModule({
   declarations: [...SHARED_COMPONENTS, ...SHARED_DIRECTIVES, ...SHARED_PIPES],
-  imports: [CommonModule, ToastrModule.forRoot(), ...SHARED_MODULES],
+  imports: [ToastrModule.forRoot(), ...SHARED_MODULES],
   exports: [
     ...SHARED_COMPONENTS,
     ...SHARED_DIRECTIVES,

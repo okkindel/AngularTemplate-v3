@@ -149,6 +149,12 @@
                 </ul>
               </li>
             </ul>
+            <button
+              class="bg-transparent px-4 py-2 font-bold text-white hover:bg-white/30"
+              (click)="logout()"
+            >
+              {{ 'LOGOUT' | translate }}
+            </button>
           </nav>
         </div>
       </div>
@@ -246,6 +252,13 @@
             </ul>
           </li>
         </ul>
+
+        <button
+          class="bg-transparent px-4 py-2 font-bold text-white hover:bg-white/30"
+          (click)="logout()"
+        >
+          {{ 'LOGOUT' | translate }}
+        </button>
       </nav>
     </div>
   </div>

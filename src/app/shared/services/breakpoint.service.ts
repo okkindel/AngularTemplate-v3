@@ -1,4 +1,4 @@
-import { BREAKPOINT } from '@shared/constant';
+import { BREAKPOINT } from '@shared/constants';
 import { Injectable } from '@angular/core';
 import { fromEvent, Subject } from 'rxjs';
 

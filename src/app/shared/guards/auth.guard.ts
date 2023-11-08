@@ -27,7 +27,7 @@ export class AuthGuard {
   ): Observable<boolean | UrlTree> | boolean | UrlTree {
     const token = getToken();
 
-    // FIXME: remove this line when the backend is ready
+    // TODO: remove this line when the backend is ready
     return true;
 
     if (!token) {

@@ -3,7 +3,7 @@ import { catchError, Observable, NEVER, tap } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 
 import { LocalizationServiceConfig } from './localization-config.service';
-import { DEFAULT_LANGUAGE } from '../constant';
+import { DEFAULT_LANGUAGE } from '../constants';
 import { Language } from '../models';
 
 @Injectable()

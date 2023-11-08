@@ -27,4 +27,8 @@ export class DashboardComponent {
       .useLanguage(lang, { withReload: false })
       .subscribe();
   }
+
+  public logout(): void {
+    this._userService.logout();
+  }
 }

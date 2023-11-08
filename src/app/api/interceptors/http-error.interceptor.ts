@@ -15,9 +15,9 @@ import { Router } from '@angular/router';
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
   constructor(
-    private _translateService: TranslateService,
-    private _toastrService: ToastrService,
-    private _router: Router,
+    private readonly _translateService: TranslateService,
+    private readonly _toastrService: ToastrService,
+    private readonly _router: Router,
   ) {}
 
   public intercept<T>(

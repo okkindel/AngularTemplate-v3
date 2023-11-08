@@ -11,7 +11,7 @@ export class LocalizationService {
   private _localeId: Language = DEFAULT_LANGUAGE;
 
   constructor(
-    @Optional() @SkipSelf() private _singleton: LocalizationService,
+    @Optional() @SkipSelf() private readonly _singleton: LocalizationService,
     private readonly _translateService: TranslateService,
     private readonly _config: LocalizationServiceConfig,
   ) {

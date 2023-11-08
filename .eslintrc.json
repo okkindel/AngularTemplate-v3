@@ -38,9 +38,9 @@
               "constructor",
               ["get-method", "set-method"],
               "static-method",
+              "static-private-method",
               "method",
               "private-method",
-              "static-private-method",
               "unknown"
             ]
           }

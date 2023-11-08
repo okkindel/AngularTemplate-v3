@@ -1,4 +1,5 @@
 import { TranslateModule } from '@ngx-translate/core';
+import { CardComponent } from '@shared/atoms/card';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -7,7 +8,7 @@ import { LoaderComponent } from '../global/loader/loader.component';
 import { LocalizedDatePipe, TruncatePipe } from '../pipes';
 import { ButtonDirective } from '../atoms';
 
-export const SHARED_ATOMS = [ButtonDirective];
+export const SHARED_ATOMS = [ButtonDirective, CardComponent];
 
 export const SHARED_MODULES = [TranslateModule, ToastrModule, CommonModule];
 

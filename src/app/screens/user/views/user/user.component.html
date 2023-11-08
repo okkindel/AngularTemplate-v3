@@ -1,6 +1,6 @@
 <h1 class="text-2xl font-bold">{{ 'USER_PANEL' | translate }}</h1>
 
-<div class="mt-3 grid grid-cols-9 gap-4">
+<div class="mt-5 grid grid-cols-9 gap-4">
   <button appButton size="large">Large</button>
   <button appButton size="base">Base</button>
   <button appButton size="small">Small</button>
@@ -48,4 +48,13 @@
   <button appButton size="large" elevated mode="link">Link E Large</button>
   <button appButton size="base" elevated mode="link">Link E Base</button>
   <button appButton size="small" elevated mode="link">Link E Small</button>
+</div>
+
+<div class="mt-5 grid grid-cols-9 gap-4">
+  <app-card padding="none">Padding None</app-card>
+  <app-card padding="small">Padding small</app-card>
+  <app-card padding="base">Padding Base</app-card>
+  <app-card padding="large">Padding large</app-card>
+
+  <app-card mode="border">Mode border</app-card>
 </div>

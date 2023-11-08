@@ -1,7 +1,7 @@
 import { booleanAttribute, HostBinding, Directive, Input } from '@angular/core';
 import { VariantProps, cva } from 'class-variance-authority';
 import { ClassArray, ClassValue } from 'clsx';
-import { cn } from '@shared/utils';
+import { combine } from '@shared/utils';
 
 const buttonVariants = cva(
   'inline-flex items-center justify-center justify-self-center whitespace-nowrap rounded text-sm font-medium tracking-wide transition duration-300 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-primary-300 disabled:text-primary-400 disabled:shadow-none',
@@ -31,31 +31,20 @@ const buttonVariants = cva(
     defaultVariants: {
       mode: 'default',
       size: 'base',
+      elevated: false,
       icon: false,
     },
     compoundVariants: [
-      {
-        icon: true,
-        size: 'large',
-        class: 'w-12',
-      },
-      {
-        icon: true,
-        size: 'base',
-        class: 'w-10',
-      },
-      {
-        icon: true,
-        size: 'small',
-        class: 'w-8',
-      },
+      { icon: true, size: 'large', class: 'w-12' },
+      { icon: true, size: 'base', class: 'w-10' },
+      { icon: true, size: 'small', class: 'w-8' },
     ],
   },
 );
 
 type Variant = VariantProps<typeof buttonVariants>;
 
-@Directive({ selector: '[appButton]' })
+@Directive({ selector: 'button[appButton]' })
 export class ButtonDirective {
   @Input() public classes: ClassValue | ClassArray = [];
 
@@ -68,6 +57,6 @@ export class ButtonDirective {
   @Input() public size: Variant['size'];
 
   @HostBinding('class') public get classNames(): string {
-    return cn(buttonVariants(this), this.classes);
+    return combine(buttonVariants(this), this.classes);
   }
 }

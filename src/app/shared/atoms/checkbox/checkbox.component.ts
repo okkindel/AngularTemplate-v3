@@ -6,7 +6,7 @@ import {
   Component,
   Input,
 } from '@angular/core';
-import { VariantProps, cva } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import { ClassArray, ClassValue } from 'clsx';
 import { combine } from '@shared/utils';
 
@@ -27,8 +27,6 @@ const checkboxVariants = cva(
     },
   },
 );
-
-type Variant = VariantProps<typeof checkboxVariants>;
 
 @Component({
   selector: 'app-checkbox',
@@ -54,8 +52,6 @@ type Variant = VariantProps<typeof checkboxVariants>;
 export class CheckboxContainerComponent implements AfterContentInit {
   @ContentChild(CheckboxDirective) private _checkbox?: CheckboxDirective;
 
-  private _mode: Variant['mode'];
-
   @Input() public classes: ClassValue | ClassArray = [];
 
   @HostBinding('class') public get classNames(): string {
@@ -63,7 +59,7 @@ export class CheckboxContainerComponent implements AfterContentInit {
   }
 
   public get svgClasses(): string {
-    return combine(checkboxVariants({ mode: this._mode }));
+    return combine(checkboxVariants({ mode: this._checkbox?.mode }));
   }
 
   public ngAfterContentInit(): void {
@@ -72,6 +68,5 @@ export class CheckboxContainerComponent implements AfterContentInit {
         'CheckboxContainerComponent must contain a CheckboxDirective',
       );
     }
-    this._mode = this._checkbox?.mode;
   }
 }

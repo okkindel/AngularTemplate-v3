@@ -13,7 +13,7 @@ const buttonVariants = cva(
         secondary:
           'bg-primary-50 text-primary-500 hover:bg-primary-100 hover:text-primary-600 focus:bg-primary-200 focus:text-primary-700 disabled:border-primary-300 disabled:bg-primary-100',
         border:
-          'border border-primary-500 text-primary-600 hover:border-primary-600 focus:border-primary-700 focus:bg-primary-700 focus:text-primary-700 disabled:border-primary-300',
+          'border border-primary-500 text-primary-600 hover:border-primary-600 focus:border-primary-700 focus:text-primary-700 disabled:border-primary-300',
         link: 'text-primary-700 hover:bg-primary-50 focus:bg-primary-100 disabled:text-primary-300 disabled:hover:bg-transparent',
       },
       size: {

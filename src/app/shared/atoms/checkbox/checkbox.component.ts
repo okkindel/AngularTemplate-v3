@@ -64,9 +64,7 @@ export class CheckboxContainerComponent implements AfterContentInit {
 
   public ngAfterContentInit(): void {
     if (!this._checkbox) {
-      throw new Error(
-        'CheckboxContainerComponent must contain a CheckboxDirective',
-      );
+      throw new Error('CheckboxComponent must contain a CheckboxDirective');
     }
   }
 }

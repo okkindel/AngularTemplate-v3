@@ -25,7 +25,7 @@ const cardVariants = cva(
   },
 );
 
-type Variant = VariantProps<typeof cardVariants>;
+export type CardVariant = VariantProps<typeof cardVariants>;
 
 @Component({
   selector: 'app-card',
@@ -34,9 +34,9 @@ type Variant = VariantProps<typeof cardVariants>;
 export class CardComponent {
   @Input() public classes: ClassValue | ClassArray = [];
 
-  @Input() public mode: Variant['mode'];
+  @Input() public mode: CardVariant['mode'];
 
-  @Input() public padding: Variant['padding'];
+  @Input() public padding: CardVariant['padding'];
 
   @HostBinding('class') public get classNames(): string {
     return combine(cardVariants(this), this.classes);

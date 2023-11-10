@@ -46,21 +46,23 @@ const buttonVariants = cva(
   },
 );
 
-type Variant = VariantProps<typeof buttonVariants>;
+export type ButtonVariant = VariantProps<typeof buttonVariants>;
 
 @Directive({ selector: 'button[appButton]' })
 export class ButtonDirective {
   @Input() public classes: ClassValue | ClassArray = [];
 
-  @Input({ transform: booleanAttribute }) public elevated: Variant['elevated'];
+  @Input({ transform: booleanAttribute })
+  public elevated: ButtonVariant['elevated'];
 
-  @Input({ transform: booleanAttribute }) public icon: Variant['icon'];
+  @Input({ transform: booleanAttribute }) public icon: ButtonVariant['icon'];
 
-  @Input() public mode: Variant['mode'];
+  @Input() public mode: ButtonVariant['mode'];
 
-  @Input({ transform: booleanAttribute }) public rounded: Variant['rounded'];
+  @Input({ transform: booleanAttribute })
+  public rounded: ButtonVariant['rounded'];
 
-  @Input() public size: Variant['size'];
+  @Input() public size: ButtonVariant['size'];
 
   @HostBinding('class') public get classNames(): string {
     return combine(buttonVariants(this), this.classes);

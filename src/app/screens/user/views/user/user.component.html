@@ -68,18 +68,18 @@
 </div>
 
 <div class="mt-5 grid grid-cols-3 gap-4">
-  <app-checkbox>
+  <app-checkbox-wrapper class="custom">
     <input id="primary" appCheckbox checked />
     <label for="primary" appCheckboxLabel>Checkbox Primary</label>
-  </app-checkbox>
+  </app-checkbox-wrapper>
 
-  <app-checkbox>
+  <app-checkbox-wrapper>
     <input id="secondary" mode="secondary" appCheckbox checked />
     <label for="secondary" appCheckboxLabel>Checkbox Secondary</label>
-  </app-checkbox>
+  </app-checkbox-wrapper>
 
-  <app-checkbox>
+  <app-checkbox-wrapper>
     <input id="disabled" mode="secondary" checked appCheckbox disabled />
     <label for="disabled" appCheckboxLabel>Checkbox Disabled</label>
-  </app-checkbox>
+  </app-checkbox-wrapper>
 </div>

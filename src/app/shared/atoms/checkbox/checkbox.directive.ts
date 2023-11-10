@@ -20,7 +20,7 @@ const checkboxVariants = cva(
   },
 );
 
-type Variant = VariantProps<typeof checkboxVariants>;
+export type CheckboxVariant = VariantProps<typeof checkboxVariants>;
 
 @Directive({ selector: 'input[appCheckbox]' })
 export class CheckboxDirective {
@@ -28,7 +28,7 @@ export class CheckboxDirective {
 
   @Input() public classes: ClassValue | ClassArray = [];
 
-  @Input() public mode: Variant['mode'];
+  @Input() public mode: CheckboxVariant['mode'];
 
   @HostBinding('class') public get classNames(): string {
     return combine(checkboxVariants(this), this.classes);

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 
 import {
-  CheckboxContainerComponent,
+  CheckboxWrapperComponent,
   CheckboxLabelDirective,
   CheckboxDirective,
   ButtonDirective,
@@ -14,7 +14,7 @@ import { LoaderComponent } from '../global/loader/loader.component';
 import { LocalizedDatePipe, TruncatePipe } from '../pipes';
 
 export const SHARED_ATOMS = [
-  CheckboxContainerComponent,
+  CheckboxWrapperComponent,
   CheckboxLabelDirective,
   CheckboxDirective,
   ButtonDirective,

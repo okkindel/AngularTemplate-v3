@@ -8,6 +8,8 @@ import {
   RadioWrapperComponent,
   RadioLabelDirective,
   CheckboxDirective,
+  TooltipComponent,
+  TooltipDirective,
   ButtonDirective,
   RadioDirective,
   CardComponent,
@@ -23,6 +25,8 @@ export const SHARED_ATOMS = [
   RadioWrapperComponent,
   RadioLabelDirective,
   RadioDirective,
+  TooltipDirective,
+  TooltipComponent,
   ButtonDirective,
   CardComponent,
 ];

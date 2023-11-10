@@ -30,6 +30,7 @@ const checkboxVariants = cva(
 
 @Component({
   selector: 'app-checkbox-wrapper',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ng-content />
     <svg
@@ -47,7 +48,6 @@ const checkboxVariants = cva(
       />
     </svg>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CheckboxWrapperComponent implements AfterContentInit {
   @ContentChild(CheckboxDirective) private _checkbox?: CheckboxDirective;

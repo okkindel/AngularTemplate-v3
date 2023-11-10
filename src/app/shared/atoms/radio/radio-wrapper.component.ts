@@ -30,6 +30,7 @@ const radioVariants = cva(
 
 @Component({
   selector: 'app-radio-wrapper',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ng-content />
     <svg
@@ -43,7 +44,6 @@ const radioVariants = cva(
       <circle cx="8" cy="8" r="4" />
     </svg>
   `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RadioWrapperComponent implements AfterContentInit {
   @ContentChild(RadioDirective) private _radio?: RadioDirective;

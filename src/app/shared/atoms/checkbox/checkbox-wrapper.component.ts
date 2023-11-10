@@ -33,8 +33,8 @@ const checkboxVariants = cva(
   template: `
     <ng-content />
     <svg
-      [ngClass]="svgClasses"
       xmlns="http://www.w3.org/2000/svg"
+      [ngClass]="svgClasses"
       role="graphics-symbol"
       viewBox="0 0 16 16"
       aria-hidden="true"
@@ -64,7 +64,9 @@ export class CheckboxWrapperComponent implements AfterContentInit {
 
   public ngAfterContentInit(): void {
     if (!this._checkbox) {
-      throw new Error('CheckboxComponent must contain a CheckboxDirective');
+      throw new Error(
+        'CheckboxWrapperComponent must contain a CheckboxDirective',
+      );
     }
   }
 }

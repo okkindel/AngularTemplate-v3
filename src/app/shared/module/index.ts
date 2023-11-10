@@ -5,8 +5,11 @@ import { ToastrModule } from 'ngx-toastr';
 import {
   CheckboxWrapperComponent,
   CheckboxLabelDirective,
+  RadioWrapperComponent,
+  RadioLabelDirective,
   CheckboxDirective,
   ButtonDirective,
+  RadioDirective,
   CardComponent,
 } from '../atoms';
 import { HasPermissionDirective, HasRoleDirective } from '../directives';
@@ -17,6 +20,9 @@ export const SHARED_ATOMS = [
   CheckboxWrapperComponent,
   CheckboxLabelDirective,
   CheckboxDirective,
+  RadioWrapperComponent,
+  RadioLabelDirective,
+  RadioDirective,
   ButtonDirective,
   CardComponent,
 ];

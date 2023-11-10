@@ -69,17 +69,55 @@
 
 <div class="mt-5 grid grid-cols-3 gap-4">
   <app-checkbox-wrapper class="custom">
-    <input id="primary" appCheckbox checked />
-    <label for="primary" appCheckboxLabel>Checkbox Primary</label>
+    <input id="c-primary" appCheckbox checked />
+    <label for="c-primary" appCheckboxLabel>Checkbox Primary</label>
   </app-checkbox-wrapper>
 
   <app-checkbox-wrapper>
-    <input id="secondary" mode="secondary" appCheckbox checked />
-    <label for="secondary" appCheckboxLabel>Checkbox Secondary</label>
+    <input id="c-secondary" mode="secondary" appCheckbox checked />
+    <label for="c-secondary" appCheckboxLabel>Checkbox Secondary</label>
   </app-checkbox-wrapper>
 
   <app-checkbox-wrapper>
-    <input id="disabled" mode="secondary" checked appCheckbox disabled />
-    <label for="disabled" appCheckboxLabel>Checkbox Disabled</label>
+    <input id="c-disabled" mode="secondary" checked appCheckbox disabled />
+    <label for="c-disabled" appCheckboxLabel>Checkbox Disabled</label>
   </app-checkbox-wrapper>
+
+  <fieldset class="flex flex-row gap-10">
+    <legend class="mb-6 text-slate-500">Primary radio button group:</legend>
+
+    <app-radio-wrapper>
+      <input id="r-primary" name="r-p" appRadio checked />
+      <label for="r-primary" appRadioLabel>Primary</label>
+    </app-radio-wrapper>
+
+    <app-radio-wrapper>
+      <input id="r-p-no" name="r-p" appRadio />
+      <label for="r-p-no" appRadioLabel>Empty</label>
+    </app-radio-wrapper>
+
+    <app-radio-wrapper>
+      <input id="r-p-dis" name="r-p" appRadio disabled />
+      <label for="r-p-dis" appRadioLabel>Disabled</label>
+    </app-radio-wrapper>
+  </fieldset>
+
+  <fieldset class="flex flex-row gap-10">
+    <legend class="mb-6 text-slate-500">Secondary radio button group:</legend>
+
+    <app-radio-wrapper>
+      <input id="r-secondary" name="r-s" mode="secondary" appRadio checked />
+      <label for="r-secondary" appRadioLabel>Secondary</label>
+    </app-radio-wrapper>
+
+    <app-radio-wrapper>
+      <input id="r-s-no" name="r-s" mode="secondary" appRadio />
+      <label for="r-s-no" appRadioLabel>Empty</label>
+    </app-radio-wrapper>
+
+    <app-radio-wrapper>
+      <input id="r-s-dis" name="r-s" mode="secondary" appRadio disabled />
+      <label for="r-s-dis" appRadioLabel>Disabled</label>
+    </app-radio-wrapper>
+  </fieldset>
 </div>

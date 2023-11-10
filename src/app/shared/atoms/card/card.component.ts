@@ -1,4 +1,9 @@
-import { HostBinding, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  HostBinding,
+  Component,
+  Input,
+} from '@angular/core';
 import { VariantProps, cva } from 'class-variance-authority';
 import { ClassArray, ClassValue } from 'clsx';
 import { combine } from '@shared/utils';
@@ -30,6 +35,7 @@ export type CardVariant = VariantProps<typeof cardVariants>;
 @Component({
   selector: 'app-card',
   template: '<ng-content />',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent {
   @Input() public classes: ClassValue | ClassArray = [];

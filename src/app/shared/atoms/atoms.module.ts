@@ -10,6 +10,11 @@ import {
   RadioLabelDirective,
   RadioDirective,
 } from './radio';
+import {
+  InputWrapperComponent,
+  InputLabelDirective,
+  InputDirective,
+} from './input';
 import { TooltipComponent, TooltipDirective } from './tooltip';
 import { ButtonDirective } from './button';
 import { AnchorDirective } from './anchor';
@@ -19,7 +24,9 @@ import { CardComponent } from './card';
 const ATOMS = [
   CheckboxWrapperComponent,
   CheckboxLabelDirective,
+  InputWrapperComponent,
   RadioWrapperComponent,
+  InputLabelDirective,
   RadioLabelDirective,
   CheckboxDirective,
   TooltipDirective,
@@ -27,6 +34,7 @@ const ATOMS = [
   DialogComponent,
   ButtonDirective,
   AnchorDirective,
+  InputDirective,
   RadioDirective,
   CardComponent,
 ];

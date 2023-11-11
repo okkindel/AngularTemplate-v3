@@ -8,6 +8,7 @@ import {
   ButtonComponent,
   DialogComponent,
   RadioComponent,
+  InputComponent,
   CardComponent,
 } from './views';
 
@@ -44,6 +45,10 @@ const routes: Routes = [
   {
     path: 'tooltip',
     component: TooltipComponent,
+  },
+  {
+    path: 'input',
+    component: InputComponent,
   },
 ];
 

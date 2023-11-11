@@ -8,6 +8,7 @@ import {
   ButtonComponent,
   DialogComponent,
   RadioComponent,
+  InputComponent,
   CardComponent,
 } from './views';
 import { AtomsRoutingModule } from './atoms-routing.module';
@@ -19,6 +20,7 @@ import { AtomsRoutingModule } from './atoms-routing.module';
     ButtonComponent,
     AnchorComponent,
     DialogComponent,
+    InputComponent,
     RadioComponent,
     CardComponent,
   ],

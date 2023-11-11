@@ -1,45 +1,14 @@
 <div>
-  <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
   <div
     *ngIf="showMenu"
     class="relative z-50 lg:hidden"
     role="dialog"
     aria-modal="true"
   >
-    <!--
-      Off-canvas menu backdrop, show/hide based on off-canvas menu state.
-
-      Entering: "transition-opacity ease-linear duration-300"
-        From: "opacity-0"
-        To: "opacity-100"
-      Leaving: "transition-opacity ease-linear duration-300"
-        From: "opacity-100"
-        To: "opacity-0"
-    -->
     <div class="fixed inset-0 bg-gray-900/80"></div>
 
     <div class="fixed inset-0 flex">
-      <!--
-        Off-canvas menu, show/hide based on off-canvas menu state.
-
-        Entering: "transition ease-in-out duration-300 transform"
-          From: "-translate-x-full"
-          To: "translate-x-0"
-        Leaving: "transition ease-in-out duration-300 transform"
-          From: "translate-x-0"
-          To: "-translate-x-full"
-      -->
       <div class="relative mr-16 flex w-full max-w-xs flex-1">
-        <!--
-          Close button, show/hide based on off-canvas menu state.
-
-          Entering: "ease-in-out duration-300"
-            From: "opacity-0"
-            To: "opacity-100"
-          Leaving: "ease-in-out duration-300"
-            From: "opacity-100"
-            To: "opacity-0"
-        -->
         <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
           <button (click)="showMenu = false" type="button" class="-m-2.5 p-2.5">
             <span class="sr-only">Close sidebar</span>
@@ -60,7 +29,6 @@
           </button>
         </div>
 
-        <!-- Sidebar component, swap this element with another sidebar if you like -->
         <div
           class="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4 ring-1 ring-white/10"
         >
@@ -76,7 +44,6 @@
               <li>
                 <ul role="list" class="-mx-2 space-y-1">
                   <li (click)="showMenu = false">
-                    <!-- Current: "bg-gray-800 text-white", Default: "text-gray-400 hover:text-white hover:bg-gray-800" -->
                     <a
                       routerLink="/home"
                       routerLinkActive="text-white bg-gray-800"
@@ -97,29 +64,6 @@
                         />
                       </svg>
                       {{ 'HOME' | translate }}
-                    </a>
-                  </li>
-                  <li (click)="showMenu = false">
-                    <a
-                      routerLink="/user"
-                      routerLinkActive="text-white bg-gray-800"
-                      class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      >
-                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                        <circle cx="12" cy="7" r="4" />
-                      </svg>
-                      {{ 'USER_PANEL' | translate }}
                     </a>
                   </li>
                   <li (click)="showMenu = false">
@@ -161,9 +105,7 @@
     </div>
   </div>
 
-  <!-- Static sidebar for desktop -->
   <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-    <!-- Sidebar component, swap this element with another sidebar if you like -->
     <div
       class="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4"
     >
@@ -179,7 +121,6 @@
           <li>
             <ul role="list" class="-mx-2 space-y-1">
               <li>
-                <!-- Current: "bg-gray-800 text-white", Default: "text-gray-400 hover:text-white hover:bg-gray-800" -->
                 <a
                   routerLink="/home"
                   routerLinkActive="text-white bg-gray-800"
@@ -204,25 +145,56 @@
               </li>
               <li>
                 <a
-                  routerLink="/user"
+                  [routerLink]="['atoms', 'button']"
                   routerLinkActive="text-white bg-gray-800"
                   class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                    <circle cx="12" cy="7" r="4" />
-                  </svg>
-                  {{ 'USER_PANEL' | translate }}
+                  Button
+                </a>
+              </li>
+              <li>
+                <a
+                  [routerLink]="['atoms', 'card']"
+                  routerLinkActive="text-white bg-gray-800"
+                  class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white"
+                >
+                  Card
+                </a>
+              </li>
+              <li>
+                <a
+                  [routerLink]="['atoms', 'checkbox']"
+                  routerLinkActive="text-white bg-gray-800"
+                  class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white"
+                >
+                  Checkbox
+                </a>
+              </li>
+              <li>
+                <a
+                  [routerLink]="['atoms', 'radio']"
+                  routerLinkActive="text-white bg-gray-800"
+                  class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white"
+                >
+                  Radio
+                </a>
+              </li>
+              <li>
+                <a
+                  [routerLink]="['atoms', 'tooltip']"
+                  routerLinkActive="text-white bg-gray-800"
+                  class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white"
+                >
+                  Tooltip
+                </a>
+              </li>
+              <li>
+                <a
+                  [routerLink]="['atoms', 'dialog']"
+                  routerLinkActive="text-white bg-gray-800"
+                  class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white"
+                >
+                  Dialog
                 </a>
               </li>
               <li>
@@ -316,8 +288,8 @@
       </div>
     </div>
 
-    <main class="flex py-4">
-      <div class="px-4 sm:px-6 lg:px-8">
+    <main class="flex w-full py-4">
+      <div class="w-full px-4 sm:px-6 lg:px-8">
         <router-outlet></router-outlet>
       </div>
     </main>

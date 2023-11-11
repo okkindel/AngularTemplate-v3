@@ -1,0 +1,15 @@
+<div class="mt-5 grid grid-cols-4 gap-4">
+  <app-card [appTooltip]="{ value: 'Top', position: 'bottom' }">
+    Tooltip Bottom
+  </app-card>
+  <app-card [appTooltip]="{ value: 'Tooltip', size: 'small' }">
+    Small Top
+  </app-card>
+  <app-card [appTooltip]="{ position: 'right', template: tooltipContent }">
+    Template Right
+    <ng-template #tooltipContent>
+      <p>Tooltip Content</p>
+      <p>Tooltip Content</p>
+    </ng-template>
+  </app-card>
+</div>

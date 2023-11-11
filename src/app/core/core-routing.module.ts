@@ -22,9 +22,9 @@ const routes: Routes = [
           import('../screens/home/home.module').then((m) => m.HomeModule),
       },
       {
-        path: 'user',
+        path: 'atoms',
         loadChildren: () =>
-          import('../screens/user/user.module').then((m) => m.UserModule),
+          import('../screens/atoms/atoms.module').then((m) => m.AtomsModule),
       },
       {
         path: 'admin',

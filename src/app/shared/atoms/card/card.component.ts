@@ -34,8 +34,9 @@ export type CardVariant = VariantProps<typeof cardVariants>;
 
 @Component({
   selector: 'app-card',
-  template: '<ng-content />',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  template: '<ng-content />',
 })
 export class CardComponent {
   @Input() public classes: ClassValue | ClassArray = [];

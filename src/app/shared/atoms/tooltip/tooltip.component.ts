@@ -5,6 +5,7 @@ import {
   Component,
 } from '@angular/core';
 import { VariantProps, cva } from 'class-variance-authority';
+import { CommonModule } from '@angular/common';
 import { ClassArray, ClassValue } from 'clsx';
 import { combine } from '@shared/utils';
 
@@ -63,6 +64,8 @@ export interface TooltipOptions extends TooltipVariant {
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule],
+  standalone: true,
   template: `
     <ng-container *ngIf="value">{{ value }}</ng-container>
     <ng-container *ngIf="!!template">

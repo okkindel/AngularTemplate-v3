@@ -2,36 +2,17 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 
-import {
-  CheckboxWrapperComponent,
-  CheckboxLabelDirective,
-  RadioWrapperComponent,
-  RadioLabelDirective,
-  CheckboxDirective,
-  TooltipComponent,
-  TooltipDirective,
-  ButtonDirective,
-  RadioDirective,
-  CardComponent,
-} from '../atoms';
 import { HasPermissionDirective, HasRoleDirective } from '../directives';
 import { LoaderComponent } from '../global/loader/loader.component';
 import { LocalizedDatePipe, TruncatePipe } from '../pipes';
+import { AtomsModule } from '../atoms';
 
-export const SHARED_ATOMS = [
-  CheckboxWrapperComponent,
-  CheckboxLabelDirective,
-  CheckboxDirective,
-  RadioWrapperComponent,
-  RadioLabelDirective,
-  RadioDirective,
-  TooltipDirective,
-  TooltipComponent,
-  ButtonDirective,
-  CardComponent,
+export const SHARED_MODULES = [
+  TranslateModule,
+  ToastrModule,
+  CommonModule,
+  AtomsModule,
 ];
-
-export const SHARED_MODULES = [TranslateModule, ToastrModule, CommonModule];
 
 export const SHARED_DIRECTIVES = [HasPermissionDirective, HasRoleDirective];
 

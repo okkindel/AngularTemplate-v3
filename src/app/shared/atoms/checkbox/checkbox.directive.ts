@@ -22,7 +22,7 @@ const checkboxVariants = cva(
 
 export type CheckboxVariant = VariantProps<typeof checkboxVariants>;
 
-@Directive({ selector: 'input[appCheckbox]' })
+@Directive({ selector: 'input[appCheckbox]', standalone: true })
 export class CheckboxDirective {
   @HostBinding('type') private _type: string = 'checkbox';
 

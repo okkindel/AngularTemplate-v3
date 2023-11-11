@@ -7,6 +7,7 @@ import {
   Input,
 } from '@angular/core';
 import { cva } from 'class-variance-authority';
+import { CommonModule } from '@angular/common';
 import { ClassArray, ClassValue } from 'clsx';
 import { combine } from '@shared/utils';
 
@@ -31,6 +32,8 @@ const radioVariants = cva(
 @Component({
   selector: 'app-radio-wrapper',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [CommonModule],
+  standalone: true,
   template: `
     <ng-content />
     <svg

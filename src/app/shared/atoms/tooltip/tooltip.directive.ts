@@ -15,6 +15,7 @@ import { TooltipComponent, TooltipOptions } from './tooltip.component';
 
 @Directive({
   selector: '[appTooltip]',
+  standalone: true,
 })
 export class TooltipDirective implements OnInit {
   private _viewContainerRef = inject(ViewContainerRef);

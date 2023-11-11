@@ -2,7 +2,7 @@ import { HostBinding, Directive, Input } from '@angular/core';
 import { ClassArray, ClassValue } from 'clsx';
 import { combine } from '@shared/utils';
 
-@Directive({ selector: 'label[appRadioLabel]' })
+@Directive({ selector: 'label[appRadioLabel]', standalone: true })
 export class RadioLabelDirective {
   @Input() public classes: ClassValue | ClassArray = [];
 

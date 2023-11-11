@@ -2,7 +2,7 @@ import { HostBinding, Directive, Input } from '@angular/core';
 import { ClassArray, ClassValue } from 'clsx';
 import { combine } from '@shared/utils';
 
-@Directive({ selector: 'label[appCheckboxLabel]' })
+@Directive({ selector: 'label[appCheckboxLabel]', standalone: true })
 export class CheckboxLabelDirective {
   @Input() public classes: ClassValue | ClassArray = [];
 

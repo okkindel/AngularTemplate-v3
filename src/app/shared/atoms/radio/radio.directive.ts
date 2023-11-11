@@ -22,7 +22,7 @@ const radioVariants = cva(
 
 export type RadioVariant = VariantProps<typeof radioVariants>;
 
-@Directive({ selector: 'input[appRadio]' })
+@Directive({ selector: 'input[appRadio]', standalone: true })
 export class RadioDirective {
   @HostBinding('type') private _type: string = 'radio';
 

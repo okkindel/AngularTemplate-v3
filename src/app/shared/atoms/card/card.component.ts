@@ -40,9 +40,9 @@ export type CardVariant = VariantProps<typeof cardVariants>;
 export class CardComponent {
   @Input() public classes: ClassValue | ClassArray = [];
 
-  @Input() public mode: CardVariant['mode'];
-
   @Input() public padding: CardVariant['padding'];
+
+  @Input() public mode: CardVariant['mode'];
 
   @HostBinding('class') public get classNames(): string {
     return combine(cardVariants(this), this.classes);

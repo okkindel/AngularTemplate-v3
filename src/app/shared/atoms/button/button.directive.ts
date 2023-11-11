@@ -50,17 +50,18 @@ export type ButtonVariant = VariantProps<typeof buttonVariants>;
 
 @Directive({ selector: 'button[appButton]' })
 export class ButtonDirective {
-  @Input() public classes: ClassValue | ClassArray = [];
-
   @Input({ transform: booleanAttribute })
   public elevated: ButtonVariant['elevated'];
 
-  @Input({ transform: booleanAttribute }) public icon: ButtonVariant['icon'];
-
-  @Input() public mode: ButtonVariant['mode'];
-
   @Input({ transform: booleanAttribute })
   public rounded: ButtonVariant['rounded'];
+
+  @Input({ transform: booleanAttribute })
+  public icon: ButtonVariant['icon'];
+
+  @Input() public classes: ClassValue | ClassArray = [];
+
+  @Input() public mode: ButtonVariant['mode'];
 
   @Input() public size: ButtonVariant['size'];
 

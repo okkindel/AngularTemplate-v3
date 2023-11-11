@@ -6,8 +6,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class LoaderService {
-  public readonly overlayBlocked$ = new BehaviorSubject<boolean>(false);
-
   public readonly spinner$ = defer(() => {
     this.overlayBlocked$.next(true);
     return NEVER.pipe(
@@ -16,4 +14,6 @@ export class LoaderService {
       }),
     );
   }).pipe(share());
+
+  public readonly overlayBlocked$ = new BehaviorSubject<boolean>(false);
 }

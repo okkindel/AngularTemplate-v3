@@ -50,9 +50,8 @@ export class TooltipComponent implements TooltipOptions {
   @HostBinding('role') private _role = 'tooltip';
 
   public position: TooltipVariant['position'];
-  public size: TooltipVariant['size'];
-
   public template?: TemplateRef<HTMLElement>;
+  public size: TooltipVariant['size'];
   public value?: string;
 
   @HostBinding('class') public get classNames(): string {

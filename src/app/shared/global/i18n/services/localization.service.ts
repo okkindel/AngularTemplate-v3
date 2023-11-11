@@ -21,12 +21,6 @@ export class LocalizationService {
     this._localeId = this._config.locale_id as Language;
   }
 
-  public initService(): Observable<void> {
-    this._localeId = (localStorage.getItem('language') ||
-      DEFAULT_LANGUAGE) as Language;
-    return this.useLanguage(this._localeId);
-  }
-
   public useLanguage(
     lang: Language,
     options?: {
@@ -47,5 +41,11 @@ export class LocalizationService {
         }
       }),
     );
+  }
+
+  public initService(): Observable<void> {
+    this._localeId = (localStorage.getItem('language') ||
+      DEFAULT_LANGUAGE) as Language;
+    return this.useLanguage(this._localeId);
   }
 }

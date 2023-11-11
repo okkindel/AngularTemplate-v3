@@ -17,15 +17,15 @@ export class ThemeService {
       : Theme.LIGHT;
   }
 
-  public setDarkMode(): void {
-    document.documentElement.classList.add(Theme.DARK);
-    document.documentElement.dataset['theme'] = Theme.DARK;
-    localStorage['theme'] = Theme.DARK;
-  }
-
   public setLightMode(): void {
     document.documentElement.classList.remove(Theme.DARK);
     document.documentElement.dataset['theme'] = Theme.LIGHT;
     localStorage['theme'] = Theme.LIGHT;
+  }
+
+  public setDarkMode(): void {
+    document.documentElement.classList.add(Theme.DARK);
+    document.documentElement.dataset['theme'] = Theme.DARK;
+    localStorage['theme'] = Theme.DARK;
   }
 }

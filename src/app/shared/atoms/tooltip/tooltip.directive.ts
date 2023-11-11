@@ -17,12 +17,12 @@ import { TooltipComponent, TooltipOptions } from './tooltip.component';
   selector: '[appTooltip]',
 })
 export class TooltipDirective implements OnInit {
-  private _elementRef = inject(ElementRef);
   private _viewContainerRef = inject(ViewContainerRef);
-
-  @Input() public appTooltip?: TooltipOptions;
+  private _elementRef = inject(ElementRef);
 
   @Input() public classes: ClassValue | ClassArray = [];
+
+  @Input() public appTooltip?: TooltipOptions;
 
   @HostBinding('class') public get classNames(): string {
     return combine(

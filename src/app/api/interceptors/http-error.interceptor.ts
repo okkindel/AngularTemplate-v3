@@ -38,6 +38,16 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     );
   }
 
+  private _showErrorToast(response: HttpErrorResponse): void {
+    const optionalMessage = response.error?.message;
+    const error = optionalMessage
+      ? Array.isArray(optionalMessage)
+        ? optionalMessage.join(', ')
+        : optionalMessage
+      : this._getErrorByStatusAndResult(response);
+    this._toastrService.error(this._translateService.instant(`API_${error}`));
+  }
+
   private _getErrorByStatusAndResult(response: HttpErrorResponse): string {
     switch (response.status) {
       case 401:
@@ -47,15 +57,5 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       default:
         return 'UNKNOWN_ERROR';
     }
-  }
-
-  private _showErrorToast(response: HttpErrorResponse): void {
-    const optionalMessage = response.error?.message;
-    const error = optionalMessage
-      ? Array.isArray(optionalMessage)
-        ? optionalMessage.join(', ')
-        : optionalMessage
-      : this._getErrorByStatusAndResult(response);
-    this._toastrService.error(this._translateService.instant(`API_${error}`));
   }
 }

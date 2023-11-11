@@ -28,8 +28,8 @@
         "perfectionist/sort-classes": [
           "warn",
           {
-            "type": "natural",
-            "order": "asc",
+            "type": "line-length",
+            "order": "desc",
             "groups": [
               "index-signature",
               "static-property",

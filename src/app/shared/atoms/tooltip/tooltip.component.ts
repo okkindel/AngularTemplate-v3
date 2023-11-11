@@ -5,6 +5,7 @@ import {
   Component,
 } from '@angular/core';
 import { VariantProps, cva } from 'class-variance-authority';
+import { ClassArray, ClassValue } from 'clsx';
 import { combine } from '@shared/utils';
 
 const tooltipVariants = cva(
@@ -34,6 +35,7 @@ const tooltipVariants = cva(
 export type TooltipVariant = VariantProps<typeof tooltipVariants>;
 export interface TooltipOptions extends TooltipVariant {
   template?: TemplateRef<HTMLElement>;
+  classes?: ClassValue | ClassArray;
   value?: string;
 }
 
@@ -51,10 +53,11 @@ export class TooltipComponent implements TooltipOptions {
 
   public position: TooltipVariant['position'];
   public template?: TemplateRef<HTMLElement>;
+  public classes?: ClassValue | ClassArray;
   public size: TooltipVariant['size'];
   public value?: string;
 
   @HostBinding('class') public get classNames(): string {
-    return combine(tooltipVariants(this));
+    return combine(tooltipVariants(this), this.classes);
   }
 }

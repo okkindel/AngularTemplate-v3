@@ -39,6 +39,7 @@ export class TooltipDirective implements OnInit {
     const tooltip = this._viewContainerRef.createComponent(TooltipComponent);
     tooltip.instance.position = this.appTooltip?.position;
     tooltip.instance.template = this.appTooltip?.template;
+    tooltip.instance.classes = this.appTooltip?.classes;
     tooltip.instance.value = this.appTooltip?.value;
     tooltip.instance.size = this.appTooltip?.size;
     return tooltip;

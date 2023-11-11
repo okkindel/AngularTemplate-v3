@@ -123,11 +123,11 @@
 </div>
 
 <div class="mt-5 grid grid-cols-4 gap-4">
-  <button appButton *appTooltip="{ value: 'Top' }">Tooltip Top</button>
-  <button appButton *appTooltip="{ position: 'bottom', value: 'Sample data' }">
+  <button appButton [appTooltip]="{ value: 'Top' }">Tooltip Top</button>
+  <button appButton [appTooltip]="{ position: 'bottom', value: 'Sample data' }">
     Tooltip Bottom
   </button>
-  <button appButton *appTooltip="{ position: 'left', template: tltCnt }">
+  <button appButton [appTooltip]="{ position: 'left', template: tltCnt }">
     Tooltip Left
   </button>
 

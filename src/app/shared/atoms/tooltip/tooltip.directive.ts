@@ -1,7 +1,8 @@
 import {
   ViewContainerRef,
   ComponentRef,
-  TemplateRef,
+  HostBinding,
+  ElementRef,
   Directive,
   inject,
   OnInit,
@@ -16,18 +17,26 @@ import { TooltipComponent, TooltipOptions } from './tooltip.component';
   selector: '[appTooltip]',
 })
 export class TooltipDirective implements OnInit {
-  private _tmpRef = inject(TemplateRef);
-  private _viewRef = inject(ViewContainerRef);
+  private _elementRef = inject(ElementRef);
+  private _viewContainerRef = inject(ViewContainerRef);
 
   @Input() public appTooltip?: TooltipOptions;
-  @Input() public appTooltipClasses: ClassValue | ClassArray = [];
+
+  @Input() public classes: ClassValue | ClassArray = [];
+
+  @HostBinding('class') public get classNames(): string {
+    return combine(
+      'relative overflow-hidden group hover:overflow-visible focus-visible:outline-none',
+      this.classes,
+    );
+  }
 
   public ngOnInit(): void {
     this._createTooltipStructure();
   }
 
   private _createAndInitializeTooltip(): ComponentRef<TooltipComponent> {
-    const tooltip = this._viewRef.createComponent(TooltipComponent);
+    const tooltip = this._viewContainerRef.createComponent(TooltipComponent);
     tooltip.instance.position = this.appTooltip?.position;
     tooltip.instance.template = this.appTooltip?.template;
     tooltip.instance.value = this.appTooltip?.value;
@@ -36,14 +45,9 @@ export class TooltipDirective implements OnInit {
   }
 
   private _createTooltipStructure(): void {
-    const combinedClasses = combine(
-      'relative overflow-hidden group hover:overflow-visible focus-visible:outline-none',
-      this.appTooltipClasses,
-    );
-
-    const [root] = this._viewRef.createEmbeddedView(this._tmpRef).rootNodes;
     const tooltipComponent = this._createAndInitializeTooltip();
-    root.appendChild(tooltipComponent.location.nativeElement);
-    root.setAttribute('class', combinedClasses);
+    this._elementRef.nativeElement.appendChild(
+      tooltipComponent.location.nativeElement,
+    );
   }
 }

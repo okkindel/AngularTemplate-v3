@@ -21,8 +21,7 @@ export class TooltipDirective implements OnInit {
   private _elementRef = inject(ElementRef);
 
   @Input() public classes: ClassValue | ClassArray = [];
-
-  @Input() public appTooltip?: TooltipOptions;
+  @Input() public appTooltip: TooltipOptions = {};
 
   @HostBinding('class') public get classNames(): string {
     return combine(

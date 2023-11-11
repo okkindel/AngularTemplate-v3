@@ -9,7 +9,7 @@ import { ClassArray, ClassValue } from 'clsx';
 import { combine } from '@shared/utils';
 
 const tooltipVariants = cva(
-  `invisible absolute z-50 w-48 rounded bg-slate-700 p-4 text-sm text-white opacity-0 transition-all before:invisible before:absolute before:z-10 before:opacity-0 before:transition-all before:content-[''] group-hover:visible group-hover:block group-hover:opacity-100 group-hover:before:visible group-hover:before:opacity-100`,
+  `invisible absolute z-50 w-48 rounded bg-slate-700 text-white opacity-0 transition-all before:invisible before:absolute before:z-50 before:opacity-0 before:transition-all before:content-[''] group-hover:visible group-hover:block group-hover:opacity-100 group-hover:before:visible group-hover:before:opacity-100`,
   {
     variants: {
       position: {
@@ -21,10 +21,32 @@ const tooltipVariants = cva(
         left: 'right-full top-1/2 mr-2 -translate-y-1/2 before:left-full before:top-1/2 before:-mt-2 before:mr-2 before:border-y-8 before:border-l-8 before:border-y-transparent before:border-l-slate-700',
       },
       size: {
-        base: '',
-        small: '',
+        base: 'p-4 text-sm',
+        small: 'p-2 text-xs',
       },
     },
+    compoundVariants: [
+      {
+        class: 'before:border-x-4 before:border-t-4',
+        position: 'top',
+        size: 'small',
+      },
+      {
+        class: 'before:border-y-4 before:border-r-4',
+        position: 'right',
+        size: 'small',
+      },
+      {
+        class: 'before:border-x-4 before:border-b-4',
+        position: 'bottom',
+        size: 'small',
+      },
+      {
+        class: 'before:border-y-4 before:border-l-4',
+        position: 'bottom',
+        size: 'small',
+      },
+    ],
     defaultVariants: {
       position: 'top',
       size: 'base',

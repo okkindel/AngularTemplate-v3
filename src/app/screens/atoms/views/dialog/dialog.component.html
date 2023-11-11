@@ -1,1 +1,50 @@
-<p>dialog works!</p>
+<!-- Modal -->
+<dialog #dial>
+  <div
+    class="flex max-h-[90vh] flex-col gap-6 overflow-hidden rounded bg-white p-6 text-slate-500 shadow-xl shadow-slate-700/10"
+  >
+    <!-- Modal header -->
+    <header id="header-3a" class="flex items-center gap-4">
+      <h3 class="flex-1 text-xl font-medium text-slate-700">
+        Terms and conditions
+      </h3>
+      <button
+        class="inline-flex h-10 items-center justify-center gap-2 justify-self-center whitespace-nowrap rounded-full px-5 text-sm font-medium tracking-wide text-emerald-500 transition duration-300 hover:bg-emerald-100 hover:text-emerald-600 focus:bg-emerald-200 focus:text-emerald-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:text-emerald-300 disabled:shadow-none disabled:hover:bg-transparent"
+        aria-label="close dialog"
+        (click)="dial.close()"
+      >
+        <span class="relative only:-mx-5">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="1.5"
+            role="graphics-symbol"
+            aria-labelledby="title-79 desc-79"
+          >
+            <title id="title-79">Icon title</title>
+            <desc id="desc-79">A more detailed description of the icon</desc>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </span>
+      </button>
+    </header>
+    <!-- Modal body -->
+    <div id="content-3a" class="flex-1 overflow-auto">
+      <p>
+        A Terms and Conditions agreement is where you let the public know the
+        terms, rules and guidelines for using your website or mobile app. They
+        include topics such as acceptable use, restricted behavior and
+        limitations of liability.
+      </p>
+    </div>
+  </div>
+</dialog>
+
+<button (click)="dial.showModal()">Open dialog</button>

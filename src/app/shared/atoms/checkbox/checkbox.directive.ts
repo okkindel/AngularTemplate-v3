@@ -1,4 +1,4 @@
-import { HostBinding, Directive, Input } from '@angular/core';
+import { HostBinding, ElementRef, Directive, Input } from '@angular/core';
 import { VariantProps, cva } from 'class-variance-authority';
 import { ClassArray, ClassValue } from 'clsx';
 import { combine } from '@shared/utils';
@@ -27,11 +27,13 @@ export type CheckboxVariant = VariantProps<typeof checkboxVariants>;
 
 @Directive({ selector: 'input[appCheckbox]', standalone: true })
 export class CheckboxDirective {
-  @HostBinding('type') private _type: string = 'checkbox';
-
   @Input() public classes: ClassValue | ClassArray = [];
 
   @Input() public mode: CheckboxVariant['mode'];
+
+  constructor(private _elRef: ElementRef) {
+    this._elRef.nativeElement.setAttribute('type', 'checkbox');
+  }
 
   @HostBinding('class') public get classNames(): string {
     return combine(checkboxVariants(this), this.classes);

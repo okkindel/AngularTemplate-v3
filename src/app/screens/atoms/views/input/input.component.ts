@@ -1,3 +1,4 @@
+import { FormControl, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 
 @Component({
@@ -5,4 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
 })
-export class InputComponent {}
+export class InputComponent {
+  public control = new FormControl('', [Validators.email]);
+}

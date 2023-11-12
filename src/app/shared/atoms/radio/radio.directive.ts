@@ -1,4 +1,4 @@
-import { HostBinding, Directive, Input } from '@angular/core';
+import { HostBinding, ElementRef, Directive, Input } from '@angular/core';
 import { VariantProps, cva } from 'class-variance-authority';
 import { ClassArray, ClassValue } from 'clsx';
 import { combine } from '@shared/utils';
@@ -25,11 +25,13 @@ export type RadioVariant = VariantProps<typeof radioVariants>;
 
 @Directive({ selector: 'input[appRadio]', standalone: true })
 export class RadioDirective {
-  @HostBinding('type') private _type: string = 'radio';
-
   @Input() public classes: ClassValue | ClassArray = [];
 
   @Input() public mode: RadioVariant['mode'];
+
+  constructor(private _elRef: ElementRef) {
+    this._elRef.nativeElement.setAttribute('type', 'radio');
+  }
 
   @HostBinding('class') public get classNames(): string {
     return combine(radioVariants(this), this.classes);

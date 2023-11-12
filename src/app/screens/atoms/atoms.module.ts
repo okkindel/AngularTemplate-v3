@@ -1,4 +1,5 @@
 import { SharedModule } from '@shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import {
@@ -24,6 +25,6 @@ import { AtomsRoutingModule } from './atoms-routing.module';
     RadioComponent,
     CardComponent,
   ],
-  imports: [AtomsRoutingModule, SharedModule],
+  imports: [AtomsRoutingModule, SharedModule, ReactiveFormsModule],
 })
 export class AtomsModule {}

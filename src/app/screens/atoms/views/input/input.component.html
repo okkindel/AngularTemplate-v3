@@ -1,25 +1,45 @@
 <app-input-wrapper>
-  <input id="input-1" appInput placeholder="Input" />
+  <input id="input-1" appInput />
   <label appInputLabel for="input-1">Input</label>
 </app-input-wrapper>
 
 <app-input-wrapper>
-  <input id="input-2" appInput size="large" required placeholder="Large" />
+  <input id="input-2" size="large" appInput />
   <label appInputLabel for="input-2">Input Large</label>
 </app-input-wrapper>
 
 <app-input-wrapper>
-  <input id="input-3" appInput mode="outline" placeholder="Outline" />
+  <input id="input-3" appInput mode="outline" />
   <label appInputLabel for="input-3">Input Outline</label>
 </app-input-wrapper>
 
 <app-input-wrapper>
+  <input mode="outline" size="large" id="input-4" appInput />
+  <label appInputLabel for="input-4">Input Outline Large</label>
+</app-input-wrapper>
+
+<app-input-wrapper>
+  <input mode="outline" error="native" id="input-5" appInput required />
+  <label appInputLabel for="input-5">Required Error Native</label>
+</app-input-wrapper>
+
+<app-input-wrapper>
   <input
-    placeholder="Large"
+    [formControl]="control"
     mode="outline"
-    size="large"
-    id="input-4"
+    error="auto"
+    id="input-6"
     appInput
   />
-  <label appInputLabel for="input-4">Input Outline Large</label>
+  <label appInputLabel for="input-6">Email Error Auto</label>
+</app-input-wrapper>
+
+<app-input-wrapper>
+  <input id="input-7" appInput mode="outline" disabled />
+  <label appInputLabel for="input-7">Input Disabled</label>
+</app-input-wrapper>
+
+<app-input-wrapper>
+  <input id="input-8" appInput mode="outline" value="Disabled" disabled />
+  <label appInputLabel for="input-8">Disabled Value</label>
 </app-input-wrapper>

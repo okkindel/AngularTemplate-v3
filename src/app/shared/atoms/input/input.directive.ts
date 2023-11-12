@@ -15,7 +15,7 @@ const inputVariants = cva(
       },
       size: {
         base: `peer/base h-10 px-4 text-sm`,
-        large: `peer/large h-12 px-4`,
+        large: `peer/large h-12 px-4 text-base`,
       },
       error: {
         auto: `peer/error-auto [&.ng-invalid.ng-touched]:border-pink-500 [&.ng-invalid.ng-touched]:text-pink-500 [&.ng-invalid.ng-touched]:focus:border-pink-500`,

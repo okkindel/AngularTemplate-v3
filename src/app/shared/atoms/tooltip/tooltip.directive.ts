@@ -26,7 +26,7 @@ export class TooltipDirective implements OnInit {
 
   @HostBinding('class') public get classNames(): string {
     return combine(
-      'relative overflow-hidden group hover:overflow-visible focus-visible:outline-none',
+      `relative overflow-hidden group hover:overflow-visible focus-visible:outline-none`,
       this.classes,
     );
   }

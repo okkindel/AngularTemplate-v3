@@ -46,22 +46,22 @@ const buttonVariants = cva(
       { icon: true, size: `small`, class: `w-8` },
       {
         disabled: true,
-        mode: `primary`,
+        mode: 'primary',
         class: `border-primary-300 bg-primary-300`,
       },
       {
         disabled: true,
-        mode: `secondary`,
+        mode: 'secondary',
         class: `border-primary-300 bg-primary-100`,
       },
       {
         disabled: true,
-        mode: `border`,
+        mode: 'border',
         class: `border-primary-300`,
       },
       {
         disabled: true,
-        mode: `link`,
+        mode: 'link',
         class: `text-primary-300 hover:bg-transparent`,
       },
     ],

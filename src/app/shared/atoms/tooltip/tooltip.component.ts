@@ -10,40 +10,44 @@ import { ClassArray, ClassValue } from 'clsx';
 import { combine } from '@shared/utils';
 
 const tooltipVariants = cva(
-  `invisible absolute z-50 w-48 rounded bg-slate-700 text-white opacity-0 transition-all before:invisible before:absolute before:z-50 before:opacity-0 before:transition-all before:content-[''] group-hover:visible group-hover:block group-hover:opacity-100 group-hover:before:visible group-hover:before:opacity-100`,
+  `invisible absolute z-50 w-48 rounded bg-slate-700 text-white opacity-0 transition-all before:invisible before:absolute
+    before:z-50 before:opacity-0 before:transition-all before:content-[''] group-hover:visible group-hover:block
+    group-hover:opacity-100 group-hover:before:visible group-hover:before:opacity-100`,
   {
     variants: {
       position: {
-        top: 'bottom-full left-1/2 mb-2 -translate-x-1/2 before:left-1/2 before:top-full before:-ml-2 before:mb-2 before:border-x-8 before:border-t-8 before:border-x-transparent before:border-t-slate-700',
-        right:
-          'left-full top-1/2 ml-2 -translate-y-1/2 before:right-full before:top-1/2 before:-mt-2 before:ml-2 before:border-y-8 before:border-r-8 before:border-y-transparent before:border-r-slate-700',
-        bottom:
-          'left-1/2 top-full mt-2 -translate-x-1/2 before:bottom-full before:left-1/2 before:-ml-2 before:mt-2 before:border-x-8 before:border-b-8 before:border-x-transparent before:border-b-slate-700',
-        left: 'right-full top-1/2 mr-2 -translate-y-1/2 before:left-full before:top-1/2 before:-mt-2 before:mr-2 before:border-y-8 before:border-l-8 before:border-y-transparent before:border-l-slate-700',
+        top: `bottom-full left-1/2 mb-2 -translate-x-1/2 before:left-1/2 before:top-full before:-ml-2 before:mb-2 before:border-x-8
+          before:border-t-8 before:border-x-transparent before:border-t-slate-700`,
+        right: `left-full top-1/2 ml-2 -translate-y-1/2 before:right-full before:top-1/2 before:-mt-2 before:ml-2 before:border-y-8
+          before:border-r-8 before:border-y-transparent before:border-r-slate-700`,
+        bottom: `left-1/2 top-full mt-2 -translate-x-1/2 before:bottom-full before:left-1/2 before:-ml-2 before:mt-2 before:border-x-8
+          before:border-b-8 before:border-x-transparent before:border-b-slate-700`,
+        left: `right-full top-1/2 mr-2 -translate-y-1/2 before:left-full before:top-1/2 before:-mt-2 before:mr-2 before:border-y-8
+          before:border-l-8 before:border-y-transparent before:border-l-slate-700`,
       },
       size: {
-        base: 'p-4 text-sm',
-        small: 'p-2 text-xs',
+        base: `p-4 text-sm`,
+        small: `p-2 text-xs`,
       },
     },
     compoundVariants: [
       {
-        class: 'before:border-x-4 before:border-t-4',
+        class: `before:border-x-4 before:border-t-4`,
         position: 'top',
         size: 'small',
       },
       {
-        class: 'before:border-y-4 before:border-r-4',
+        class: `before:border-y-4 before:border-r-4`,
         position: 'right',
         size: 'small',
       },
       {
-        class: 'before:border-x-4 before:border-b-4',
+        class: `before:border-x-4 before:border-b-4`,
         position: 'bottom',
         size: 'small',
       },
       {
-        class: 'before:border-y-4 before:border-l-4',
+        class: `before:border-y-4 before:border-l-4`,
         position: 'bottom',
         size: 'small',
       },

@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./input.component.scss'],
 })
 export class InputComponent {
-  public control = new FormControl('', [Validators.email]);
+  public control = new FormControl('', [Validators.email, Validators.required]);
 }

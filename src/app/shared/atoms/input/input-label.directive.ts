@@ -5,10 +5,9 @@ import { combine } from '@shared/utils';
 const sizeClasses = `peer-placeholder-shown/base:top-2.5 peer-placeholder-shown/large:top-3
   peer-placeholder-shown/base:text-sm peer-placeholder-shown/large:text-base`;
 
-const errorClasses = `peer-valid/error-true:text-pink-500 peer-invalid/error-native:text-pink-500
-  peer-focus/error-true:text-pink-500 peer-invalid/error-native:peer-focus/error-native:text-pink-500
-  peer-[&.ng-invalid.ng-touched]/error-auto:text-pink-500 
-  peer-[&.ng-invalid.ng-touched]/error-auto:peer-focus/error-native:text-pink-500`;
+const errorClasses = `peer-valid/error-true:text-pink-500 peer-focus/error-true:text-pink-500
+  peer-invalid/error-native:text-pink-500 peer-invalid/error-native:peer-focus/error-native:text-pink-500
+  peer-[&.ng-invalid.ng-touched]/error-auto:text-pink-500 peer-[&.ng-invalid.ng-touched]/error-auto:peer-focus/error-auto:text-pink-500`;
 
 const disabledClasses = `peer-disabled:cursor-not-allowed peer-disabled:text-slate-400
   peer-disabled:before:bg-transparent`;

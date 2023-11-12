@@ -1,3 +1,4 @@
+import { LucideAngularModule, Home } from 'lucide-angular';
 import { SharedModule } from '@shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -25,6 +26,11 @@ import { AtomsRoutingModule } from './atoms-routing.module';
     RadioComponent,
     CardComponent,
   ],
-  imports: [AtomsRoutingModule, SharedModule, ReactiveFormsModule],
+  imports: [
+    LucideAngularModule.pick({ Home }),
+    ReactiveFormsModule,
+    AtomsRoutingModule,
+    SharedModule,
+  ],
 })
 export class AtomsModule {}

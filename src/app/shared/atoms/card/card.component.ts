@@ -9,18 +9,18 @@ import { ClassArray, ClassValue } from 'clsx';
 import { combine } from '@shared/utils';
 
 const cardVariants = cva(
-  'overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200',
+  `overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200`,
   {
     variants: {
       mode: {
-        default: 'border border-transparent',
-        border: 'border border-slate-200',
+        default: `border border-transparent`,
+        border: `border border-slate-200`,
       },
       padding: {
-        none: 'p-0',
-        small: 'p-4',
-        base: 'p-6',
-        large: 'p-8',
+        none: `p-0`,
+        small: `p-4`,
+        base: `p-6`,
+        large: `p-8`,
       },
     },
     defaultVariants: {

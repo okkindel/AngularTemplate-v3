@@ -13,6 +13,6 @@ export class InputWrapperComponent {
   @Input() public classes: ClassValue | ClassArray = [];
 
   @HostBinding('class') public get className(): string {
-    return combine('block relative my-6', this.classes);
+    return combine(`block relative my-6`, this.classes);
   }
 }

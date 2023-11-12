@@ -8,7 +8,7 @@ export class RadioLabelDirective {
 
   @HostBinding('class') public get classNames(): string {
     return combine(
-      'cursor-pointer select-none pl-2 text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400',
+      `cursor-pointer select-none pl-2 text-slate-500 peer-disabled:cursor-not-allowed peer-disabled:text-slate-400`,
       this.classes,
     );
   }

@@ -18,7 +18,8 @@ const inputVariants = cva(
         large: `peer/large h-12 px-4 text-base`,
       },
       error: {
-        auto: `peer/error-auto [&.ng-invalid.ng-touched]:border-pink-500 [&.ng-invalid.ng-touched]:text-pink-500 [&.ng-invalid.ng-touched]:focus:border-pink-500`,
+        auto: `peer/error-auto [&.ng-invalid.ng-touched]:border-pink-500
+          [&.ng-invalid.ng-touched]:text-pink-500 [&.ng-invalid.ng-touched]:focus:border-pink-500`,
         native: `peer/error-native invalid:border-pink-500 invalid:text-pink-500 invalid:focus:border-pink-500`,
         true: `peer/error-true border-pink-500 text-pink-500 focus:border-pink-500`,
       },

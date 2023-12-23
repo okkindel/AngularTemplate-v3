@@ -39,11 +39,11 @@ export type CardVariant = VariantProps<typeof cardVariants>;
   template: '<ng-content />',
 })
 export class CardComponent {
-  @Input() public classes: ClassValue | ClassArray = [];
-
   @Input() public padding: CardVariant['padding'];
 
   @Input() public mode: CardVariant['mode'];
+
+  @Input() public classes: ClassValue | ClassArray = [];
 
   @HostBinding('class') public get classNames(): string {
     return combine(cardVariants(this), this.classes);

@@ -54,12 +54,12 @@ export class RadioWrapperComponent implements AfterContentInit {
 
   @Input() public classes: ClassValue | ClassArray = [];
 
-  @HostBinding('class') public get classNames(): string {
-    return combine('relative flex items-center', this.classes);
-  }
-
   public get svgClasses(): string {
     return combine(radioVariants({ mode: this._radio?.mode }));
+  }
+
+  @HostBinding('class') public get classNames(): string {
+    return combine('relative flex items-center', this.classes);
   }
 
   public ngAfterContentInit(): void {

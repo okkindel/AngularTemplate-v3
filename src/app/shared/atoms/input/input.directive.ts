@@ -39,13 +39,13 @@ export type InputVariant = VariantProps<typeof inputVariants>;
   standalone: true,
 })
 export class InputDirective {
-  @Input() public classes: ClassValue | ClassArray = [];
-
-  @Input() public error: InputVariant['error'];
+  @Input() public size: InputVariant['size'];
 
   @Input() public mode: InputVariant['mode'];
 
-  @Input() public size: InputVariant['size'];
+  @Input() public error: InputVariant['error'];
+
+  @Input() public classes: ClassValue | ClassArray = [];
 
   constructor(private _elRef: ElementRef) {
     this._elRef.nativeElement.setAttribute('placeholder', '');

@@ -25,9 +25,9 @@ export type RadioVariant = VariantProps<typeof radioVariants>;
 
 @Directive({ selector: 'input[appRadio]', standalone: true })
 export class RadioDirective {
-  @Input() public classes: ClassValue | ClassArray = [];
-
   @Input() public mode: RadioVariant['mode'];
+
+  @Input() public classes: ClassValue | ClassArray = [];
 
   constructor(private _elRef: ElementRef) {
     this._elRef.nativeElement.setAttribute('type', 'radio');

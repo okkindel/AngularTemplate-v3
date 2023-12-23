@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent {
-  public language: Language = this._i18nService.currentLang as Language;
   public showMenu: boolean = false;
+  public language: Language = this._i18nService.currentLang as Language;
 
   constructor(
     private readonly _localizationService: LocalizationService,
@@ -21,14 +21,14 @@ export class DashboardComponent {
     return this._userService.user?.name || '';
   }
 
+  public logout(): void {
+    this._userService.logout();
+  }
+
   public changeLanguage(lang: Language): void {
     this.language = lang;
     this._localizationService
       .useLanguage(lang, { withReload: false })
       .subscribe();
-  }
-
-  public logout(): void {
-    this._userService.logout();
   }
 }

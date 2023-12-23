@@ -27,9 +27,9 @@ export type CheckboxVariant = VariantProps<typeof checkboxVariants>;
 
 @Directive({ selector: 'input[appCheckbox]', standalone: true })
 export class CheckboxDirective {
-  @Input() public classes: ClassValue | ClassArray = [];
-
   @Input() public mode: CheckboxVariant['mode'];
+
+  @Input() public classes: ClassValue | ClassArray = [];
 
   constructor(private _elRef: ElementRef) {
     this._elRef.nativeElement.setAttribute('type', 'checkbox');

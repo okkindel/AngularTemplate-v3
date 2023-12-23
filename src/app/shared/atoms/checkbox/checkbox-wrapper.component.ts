@@ -63,12 +63,12 @@ export class CheckboxWrapperComponent implements AfterContentInit {
 
   @Input() public classes: ClassValue | ClassArray = [];
 
-  @HostBinding('class') public get classNames(): string {
-    return combine('relative flex h-6 flex-wrap items-center', this.classes);
-  }
-
   public get svgClasses(): string {
     return combine(checkboxVariants({ mode: this._checkbox?.mode }));
+  }
+
+  @HostBinding('class') public get classNames(): string {
+    return combine('relative flex h-6 flex-wrap items-center', this.classes);
   }
 
   public ngAfterContentInit(): void {

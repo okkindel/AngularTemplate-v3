@@ -50,10 +50,10 @@ const sort = <T>(
         ? -1
         : 1
       : callback(a) > callback(b)
-      ? order === 'asc'
-        ? 1
-        : -1
-      : 0,
+        ? order === 'asc'
+          ? 1
+          : -1
+        : 0,
   );
 
 export {

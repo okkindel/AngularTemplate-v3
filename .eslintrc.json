@@ -17,7 +17,7 @@
         "plugin:tailwindcss/recommended"
       ],
       "rules": {
-        // perfectionist rules
+        // -------- perfectionist rules --------
         "perfectionist/sort-named-imports": "warn",
         "perfectionist/sort-named-exports": "warn",
         "perfectionist/sort-interfaces": "off",
@@ -45,7 +45,7 @@
             ]
           }
         ],
-        // angular-eslint rules
+        // -------- angular-eslint rules --------
         "@angular-eslint/no-empty-lifecycle-method": "warn",
         "@angular-eslint/directive-selector": [
           "error",
@@ -55,7 +55,7 @@
           "error",
           { "type": "element", "prefix": "app", "style": "kebab-case" }
         ],
-        // typescript-eslint rules
+        // -------- typescript-eslint rules --------
         "@typescript-eslint/naming-convention": [
           "warn",
           {
@@ -72,9 +72,9 @@
           "warn",
           { "overrides": { "constructors": "no-public" } }
         ],
-        // prettier rules
+        // -------- prettier rules --------
         "prettier/prettier": "warn",
-        // eslint rules
+        // -------- eslint rules --------
         "spaced-comment": ["error", "always", { "exceptions": ["*"] }],
         "no-console": ["warn", { "allow": ["warn", "error", "info"] }],
         "no-extra-boolean-cast": "off",

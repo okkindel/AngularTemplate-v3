@@ -71,10 +71,12 @@ export interface TooltipOptions extends TooltipVariant {
   imports: [CommonModule],
   standalone: true,
   template: `
-    <ng-container *ngIf="value">{{ value }}</ng-container>
-    <ng-container *ngIf="!!template">
+    @if (value) {
+      {{ value }}
+    }
+    @if (template) {
       <ng-container *ngTemplateOutlet="template" />
-    </ng-container>
+    }
   `,
 })
 export class TooltipComponent implements TooltipOptions {

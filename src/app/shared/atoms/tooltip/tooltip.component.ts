@@ -80,11 +80,11 @@ export interface TooltipOptions extends TooltipVariant {
 export class TooltipComponent implements TooltipOptions {
   @HostBinding('role') private _role = 'tooltip';
 
-  public position: TooltipVariant['position'];
-  public template?: TemplateRef<HTMLElement>;
-  public classes?: ClassValue | ClassArray;
-  public size: TooltipVariant['size'];
   public value?: string;
+  public template?: TemplateRef<HTMLElement>;
+  public size: TooltipVariant['size'];
+  public position: TooltipVariant['position'];
+  public classes?: ClassValue | ClassArray;
 
   @HostBinding('class') public get classNames(): string {
     return combine(tooltipVariants(this), this.classes);

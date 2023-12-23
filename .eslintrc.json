@@ -28,7 +28,7 @@
         "perfectionist/sort-classes": [
           "warn",
           {
-            "type": "line-length",
+            "type": "natural",
             "order": "desc",
             "groups": [
               "index-signature",

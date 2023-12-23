@@ -1,10 +1,9 @@
 import { User } from '@shared/models/entities/user.interface';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { Permission, Role } from '@shared/enums';
 import { clearToken } from '@shared/utils';
+import { Optional } from '@shared/models';
 import { Router } from '@angular/router';
-
-import { Permission, Role } from '../enums';
-import { Optional } from '../models';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +11,7 @@ import { Optional } from '../models';
 export class UserService {
   private _user?: User;
 
-  constructor(private readonly _router: Router) {}
+  private readonly _router = inject(Router);
 
   public get user(): Optional<User> {
     return this._user || null;
@@ -22,6 +21,16 @@ export class UserService {
     this._user = data || undefined;
   }
 
+  public logout(): void {
+    this._router.navigate(['/auth/login']).then(() => {
+      clearToken();
+    });
+  }
+
+  public hasRole(roles: (keyof typeof Role)[] | Role[]): boolean {
+    return !!this._user?.role && roles.includes(this._user.role);
+  }
+
   public hasPermission(
     permissions: (keyof typeof Permission)[] | Permission[],
   ): boolean {
@@ -29,15 +38,5 @@ export class UserService {
       !!this._user?.permissions &&
       this._user.permissions.some((el: Permission) => permissions.includes(el))
     );
-  }
-
-  public hasRole(roles: (keyof typeof Role)[] | Role[]): boolean {
-    return !!this._user?.role && roles.includes(this._user.role);
-  }
-
-  public logout(): void {
-    this._router.navigate(['/auth/login']).then(() => {
-      clearToken();
-    });
   }
 }

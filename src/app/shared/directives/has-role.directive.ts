@@ -5,9 +5,8 @@ import {
   OnInit,
   Input,
 } from '@angular/core';
-
-import { UserService } from '../services';
-import { Role } from '../enums';
+import { UserService } from '@shared/services';
+import { Role } from '@shared/enums';
 
 @Directive({
   selector: '[appHasRole]',

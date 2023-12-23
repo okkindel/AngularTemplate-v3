@@ -1,20 +1,10 @@
 import { NgModule } from '@angular/core';
 
-import {
-  SHARED_COMPONENTS,
-  SHARED_DIRECTIVES,
-  SHARED_MODULES,
-  SHARED_PIPES,
-} from './module';
+import { SHARED_DIRECTIVES, SHARED_MODULES, SHARED_PIPES } from './module';
 
 @NgModule({
-  declarations: [...SHARED_COMPONENTS, ...SHARED_DIRECTIVES, ...SHARED_PIPES],
+  exports: [...SHARED_DIRECTIVES, ...SHARED_MODULES, ...SHARED_PIPES],
+  declarations: [...SHARED_DIRECTIVES, ...SHARED_PIPES],
   imports: [...SHARED_MODULES],
-  exports: [
-    ...SHARED_COMPONENTS,
-    ...SHARED_DIRECTIVES,
-    ...SHARED_MODULES,
-    ...SHARED_PIPES,
-  ],
 })
 export class SharedModule {}

@@ -1,5 +1,5 @@
+import { PipeTransform, inject, Pipe } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { PipeTransform, Pipe } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { Optional } from '@shared/models';
 
@@ -8,7 +8,7 @@ import { Optional } from '@shared/models';
   pure: false,
 })
 export class LocalizedDatePipe implements PipeTransform {
-  constructor(private readonly _i18nService: TranslateService) {}
+  private readonly _i18nService = inject(TranslateService);
 
   public transform(value?: Date, format = 'mediumDate'): Optional<string> {
     const datePipe = new DatePipe(this._i18nService.currentLang);

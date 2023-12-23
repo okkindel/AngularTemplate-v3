@@ -35,6 +35,13 @@ export class TooltipDirective implements OnInit {
     this._createTooltipStructure();
   }
 
+  private _createTooltipStructure(): void {
+    const tooltipComponent = this._createAndInitializeTooltip();
+    this._elementRef.nativeElement.appendChild(
+      tooltipComponent.location.nativeElement,
+    );
+  }
+
   private _createAndInitializeTooltip(): ComponentRef<TooltipComponent> {
     const tooltip = this._viewContainerRef.createComponent(TooltipComponent);
     tooltip.instance.position = this.appTooltip?.position;
@@ -43,12 +50,5 @@ export class TooltipDirective implements OnInit {
     tooltip.instance.value = this.appTooltip?.value;
     tooltip.instance.size = this.appTooltip?.size;
     return tooltip;
-  }
-
-  private _createTooltipStructure(): void {
-    const tooltipComponent = this._createAndInitializeTooltip();
-    this._elementRef.nativeElement.appendChild(
-      tooltipComponent.location.nativeElement,
-    );
   }
 }

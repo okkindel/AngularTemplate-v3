@@ -7,18 +7,16 @@ import {
 } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { Injectable, inject } from '@angular/core';
 import { clearToken } from '@shared/utils';
-import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
 @Injectable()
 export class HttpErrorInterceptor implements HttpInterceptor {
-  constructor(
-    private readonly _translateService: TranslateService,
-    private readonly _toastrService: ToastrService,
-    private readonly _router: Router,
-  ) {}
+  private readonly _translateService = inject(TranslateService);
+  private readonly _toastrService = inject(ToastrService);
+  private readonly _router = inject(Router);
 
   public intercept<T>(
     request: HttpRequest<T>,

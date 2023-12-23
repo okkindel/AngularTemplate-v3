@@ -5,11 +5,10 @@ import {
   Router,
 } from '@angular/router';
 import { catchError, Observable, map, of } from 'rxjs';
+import { clearToken, getToken } from '@shared/utils';
+import { UserService } from '@shared/services';
 import { Injectable } from '@angular/core';
-
-import { UserRepository } from '../../api/user/user.repository';
-import { clearToken, getToken } from '../utils';
-import { UserService } from '../services';
+import { UserRepository } from '@api/user';
 
 @Injectable({
   providedIn: 'root',

@@ -1,11 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { debounceTime, Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 import { LoaderService } from './loader.service';
 
 @Component({
   selector: 'app-loader',
   template: `
+    <!-- @if (!!(overlayBlocked$ | async)) {
     <div
       class="fixed left-0 top-0 flex h-full w-full items-center justify-center bg-black/50"
       *ngIf="!!(overlayBlocked$ | async)"
@@ -27,7 +29,10 @@ import { LoaderService } from './loader.service';
         />
       </svg>
     </div>
+    } -->
   `,
+  standalone: true,
+  imports: [CommonModule],
 })
 export class LoaderComponent {
   public overlayBlocked$: Observable<boolean> = inject(

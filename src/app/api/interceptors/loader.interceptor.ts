@@ -5,13 +5,13 @@ import {
   HttpEvent,
 } from '@angular/common/http';
 import { LoaderService } from '@shared/global/loader';
+import { Injectable, inject } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
 import { finalize } from 'rxjs/operators';
 
 @Injectable()
 export class LoaderInterceptor implements HttpInterceptor {
-  constructor(private readonly _loaderService: LoaderService) {}
+  private readonly _loaderService = inject(LoaderService);
 
   public intercept<T>(
     req: HttpRequest<T>,

@@ -5,9 +5,8 @@ import {
   OnInit,
   Input,
 } from '@angular/core';
-
-import { UserService } from '../services';
-import { Permission } from '../enums';
+import { UserService } from '@shared/services';
+import { Permission } from '@shared/enums';
 
 @Directive({
   selector: '[appHasPermission]',

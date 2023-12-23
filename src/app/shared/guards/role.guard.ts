@@ -1,12 +1,12 @@
 import { ActivatedRouteSnapshot } from '@angular/router';
+import { Injectable, inject } from '@angular/core';
 import { UserService } from '@shared/services';
-import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RoleGuard {
-  constructor(private readonly _userService: UserService) {}
+  private readonly _userService = inject(UserService);
 
   public canActivate(route: ActivatedRouteSnapshot): boolean {
     const requiredRoles = route.data['roles'];

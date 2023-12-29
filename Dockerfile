@@ -1,4 +1,4 @@
-FROM node:lts-alpine3.14 as builder
+FROM node:lts-alpine as builder
 
 COPY package.json ./
 
@@ -10,7 +10,11 @@ RUN mv ./node_modules ./application && mv ./package.json ./application
 
 WORKDIR /application
 
+RUN apk add git
+
 COPY . .
+
+RUN sh ./scripts/version.sh
 
 RUN npm run build
 

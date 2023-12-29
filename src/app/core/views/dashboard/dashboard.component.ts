@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 @Component({
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
+  host: { id: 'dashboard' },
 })
 export class DashboardComponent {
   public showMenu: boolean = false;

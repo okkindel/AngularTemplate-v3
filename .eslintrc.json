@@ -55,6 +55,7 @@
           "error",
           { "type": "element", "prefix": "app", "style": "kebab-case" }
         ],
+        "@angular-eslint/no-host-metadata-property": "off",
         // -------- typescript-eslint rules --------
         "@typescript-eslint/naming-convention": [
           "warn",

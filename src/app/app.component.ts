@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
     <app-loader />
     <router-outlet />
   `,
-  styles: [':host { height: 100vh; display: block; }'],
+  host: { class: 'h-screen block' },
 })
 export class AppComponent {}

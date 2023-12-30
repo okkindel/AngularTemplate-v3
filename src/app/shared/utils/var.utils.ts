@@ -1,31 +1,16 @@
-const isDefined = <T>(el: T): boolean => el !== undefined;
+// isDefined('abc') => true; isDefined(undefined) => false
+export const isDefined = <T>(el: T): boolean => el !== undefined;
 
-const not = (el: boolean): boolean => !el;
+// isUndefined('abc') => false; isUndefined(undefined) => true
+export const isUndefined = <T>(obj: T): boolean => obj === undefined;
 
-const isEmptyString = (str: string): boolean => str === '';
+// isNull('abc') => false; isNull(null) => true
+export const isNull = <T>(obj: T): boolean => obj === null;
 
-const isUndefined = <T>(obj: T): boolean => obj === undefined;
-
-const isNull = <T>(obj: T): boolean => obj === null;
-
-const isNullOrUndefined = <T>(obj: T): boolean =>
+// isNullOrUndefined('abc') => false; isNullOrUndefined(null) => true; isNullOrUndefined(undefined) => true
+export const isNullOrUndefined = <T>(obj: T): boolean =>
   isNull(obj) || isUndefined(obj);
 
-function deepCopy<T>(el: Array<T> | T): Array<T> | T {
-  return JSON.parse(JSON.stringify(el));
-}
-
-function objectEquals<T>(el1: T, el2: T): boolean {
-  return JSON.stringify(el1) === JSON.stringify(el2);
-}
-
-export {
-  isNullOrUndefined,
-  isEmptyString,
-  objectEquals,
-  isUndefined,
-  isDefined,
-  deepCopy,
-  isNull,
-  not,
-};
+// objectEquals({ a: 1 }, { a: 1 }) => true
+export const objectEquals = <T>(el1: T, el2: T): boolean =>
+  structuredClone(el1) === structuredClone(el2);

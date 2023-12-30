@@ -1,7 +1,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -9,25 +8,25 @@
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
     "sourceMap": true,
     "declaration": false,
-    "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "ES2022",
-    "module": "ES2022",
+    "target": "ESNext",
+    "module": "ESNext",
     "useDefineForClassFields": false,
-    "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
-    "lib": ["ES2022", "dom"],
+    "lib": ["ESNext", "dom"],
     "paths": {
-      "@environments/*": ["src/environments/*"],
-      "@screens/*": ["src/app/screens/*"],
-      "@shared/*": ["src/app/shared/*"],
-      "@styles/*": ["src/app/styles/*"],
-      "@core/*": ["src/app/core/*"],
-      "@api/*": ["src/app/api/*"]
+      "@environments/*": ["./src/environments/*"],
+      "@screens/*": ["./src/app/screens/*"],
+      "@shared/*": ["./src/app/shared/*"],
+      "@styles/*": ["./src/app/styles/*"],
+      "@core/*": ["./src/app/core/*"],
+      "@api/*": ["./src/app/api/*"]
     }
   },
   "angularCompilerOptions": {

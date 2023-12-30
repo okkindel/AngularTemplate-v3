@@ -1,40 +1,50 @@
+import {
+  distinctUntilChanged,
+  BehaviorSubject,
+  shareReplay,
+  fromEvent,
+  startWith,
+  map,
+} from 'rxjs';
 import { BREAKPOINT } from '@shared/constants';
+import { ScreenWidth } from '@shared/models';
+import { Breakpoint } from '@shared/models';
 import { Injectable } from '@angular/core';
-import { fromEvent, Subject } from 'rxjs';
-
-type ScreenWidth = (typeof BREAKPOINT)[keyof typeof BREAKPOINT];
 
 @Injectable({
   providedIn: 'root',
 })
 export class BreakpointService {
-  private _currentBreakpoint: ScreenWidth;
-
-  public resizeSubject$ = new Subject<ScreenWidth>();
+  public readonly size$ = new BehaviorSubject<ScreenWidth>(
+    this._getCurrentBreakpoint(),
+  );
 
   constructor() {
-    this._currentBreakpoint = this._getCurrentBreakpoint();
-    // TODO: this is unsubscribed. Check later if we can somehow unsubscribe it.
-    fromEvent(window, 'resize').subscribe(() => this._getCurrentBreakpoint());
+    fromEvent(window, 'resize')
+      .pipe(
+        startWith(null),
+        map(() => this._getCurrentBreakpoint()),
+        distinctUntilChanged(),
+        shareReplay(1),
+      )
+      .subscribe((size: ScreenWidth) => {
+        this.size$.next(size);
+      });
   }
 
-  public get currentBreakpoint(): ScreenWidth {
-    return this._currentBreakpoint;
+  public isSmallerThan(breakpoint: Breakpoint): boolean {
+    return this.size$.value < BREAKPOINT[breakpoint];
+  }
+
+  public isGreaterThan(breakpoint: Breakpoint): boolean {
+    return this.size$.value > BREAKPOINT[breakpoint];
   }
 
   private _getCurrentBreakpoint(): ScreenWidth {
-    const oldBreakpoint = this._currentBreakpoint;
-
-    const newBreakpoint: ScreenWidth = Object.values(BREAKPOINT)
-      .filter((breakpoint) => {
-        return window.innerWidth >= breakpoint;
-      })
-      .slice(-1)[0];
-
-    if (oldBreakpoint !== newBreakpoint) {
-      this._currentBreakpoint = newBreakpoint;
-      this.resizeSubject$.next(this._currentBreakpoint);
-    }
-    return this._currentBreakpoint;
+    const width: number = window.innerWidth;
+    const breakpoints: ScreenWidth[] = Object.values(BREAKPOINT);
+    return (
+      breakpoints.find((bp: ScreenWidth) => width <= bp) || BREAKPOINT['2xl']
+    );
   }
 }

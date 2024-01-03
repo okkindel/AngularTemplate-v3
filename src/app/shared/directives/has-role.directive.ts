@@ -3,6 +3,7 @@ import {
   TemplateRef,
   Directive,
   OnInit,
+  inject,
   Input,
 } from '@angular/core';
 import { UserService } from '@shared/services';
@@ -12,13 +13,11 @@ import { Role } from '@shared/enums';
   selector: '[appHasRole]',
 })
 export class HasRoleDirective implements OnInit {
-  @Input('appHasRole') public roles?: (keyof typeof Role)[] | Role[];
+  private readonly _viewContainer = inject(ViewContainerRef);
+  private readonly _userService = inject(UserService);
+  private readonly _templateRef = inject(TemplateRef<HTMLElement>);
 
-  constructor(
-    private readonly _templateRef: TemplateRef<HTMLElement>,
-    private readonly _viewContainer: ViewContainerRef,
-    private readonly _userService: UserService,
-  ) {}
+  @Input('appHasRole') public roles?: (keyof typeof Role)[] | Role[];
 
   public ngOnInit(): void {
     this.roles && this._userService.hasRole(this.roles)

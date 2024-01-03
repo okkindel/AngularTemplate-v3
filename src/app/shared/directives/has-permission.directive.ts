@@ -3,6 +3,7 @@ import {
   TemplateRef,
   Directive,
   OnInit,
+  inject,
   Input,
 } from '@angular/core';
 import { UserService } from '@shared/services';
@@ -12,15 +13,13 @@ import { Permission } from '@shared/enums';
   selector: '[appHasPermission]',
 })
 export class HasPermissionDirective implements OnInit {
+  private readonly _viewContainer = inject(ViewContainerRef);
+  private readonly _userService = inject(UserService);
+  private readonly _templateRef = inject(TemplateRef<HTMLElement>);
+
   @Input('appHasPermission') public permissions?:
     | (keyof typeof Permission)[]
     | Permission[];
-
-  constructor(
-    private readonly _templateRef: TemplateRef<HTMLElement>,
-    private readonly _viewContainer: ViewContainerRef,
-    private readonly _userService: UserService,
-  ) {}
 
   public ngOnInit(): void {
     this.permissions && this._userService.hasPermission(this.permissions)

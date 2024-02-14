@@ -20,6 +20,7 @@ import { ButtonDirective } from './button';
 import { AnchorDirective } from './anchor';
 import { DialogComponent } from './dialog';
 import { CardComponent } from './card';
+import { IconComponent } from './icon';
 
 const ATOMS = [
   CheckboxWrapperComponent,
@@ -37,6 +38,7 @@ const ATOMS = [
   InputDirective,
   RadioDirective,
   CardComponent,
+  IconComponent,
 ];
 
 @NgModule({ imports: ATOMS, exports: ATOMS })

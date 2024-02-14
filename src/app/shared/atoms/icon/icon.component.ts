@@ -40,6 +40,7 @@ export type IconVariant = VariantProps<typeof iconVariants>;
 export class IconComponent {
   @Input() public mode: IconVariant['mode'];
 
+  // https://lucide.dev/icons/
   @Input({ required: true }) public name!: Icon;
 
   @Input() public size?: string | number;

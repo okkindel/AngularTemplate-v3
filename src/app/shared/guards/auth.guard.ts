@@ -6,19 +6,17 @@ import {
 } from '@angular/router';
 import { catchError, Observable, map, of } from 'rxjs';
 import { clearToken, getToken } from '@shared/utils';
+import { Injectable, inject } from '@angular/core';
 import { UserService } from '@shared/services';
-import { Injectable } from '@angular/core';
-import { UserRepository } from '@api/user';
+import { UsersRepository } from '@api/users';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthGuard {
-  constructor(
-    private readonly _userRepository: UserRepository,
-    private readonly _userService: UserService,
-    private readonly _router: Router,
-  ) {}
+  private readonly _userRepository = inject(UsersRepository);
+  private readonly _userService = inject(UserService);
+  private readonly _router = inject(Router);
 
   public canActivate(
     _activatedRoute: ActivatedRouteSnapshot,

@@ -6,10 +6,10 @@ import {
   LoaderInterceptor,
   TokenInterceptor,
 } from './interceptors';
+import { UsersRepository } from './users/users.repository';
 import { AuthRepository } from './auth/auth.repository';
-import { UserRepository } from './user/user.repository';
 
-const REPOSITORIES = [AuthRepository, UserRepository];
+const REPOSITORIES = [AuthRepository, UsersRepository];
 
 @NgModule({
   providers: [

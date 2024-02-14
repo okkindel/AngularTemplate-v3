@@ -2,15 +2,22 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { AuthRepository } from '@api/auth/auth.repository';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { Component, inject } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Component } from '@angular/core';
 import { setToken } from '@shared/utils';
 
 @Component({
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  host: { id: 'login' },
 })
 export class LoginComponent {
+  private readonly _translateService = inject(TranslateService);
+  private readonly _authRepo = inject(AuthRepository);
+  private readonly _route = inject(ActivatedRoute);
+  private readonly _toast = inject(ToastrService);
+  private readonly _router = inject(Router);
+
   public form = new FormGroup({
     email: new FormControl('', {
       validators: [Validators.required, Validators.email],
@@ -21,14 +28,6 @@ export class LoginComponent {
       nonNullable: true,
     }),
   });
-
-  constructor(
-    private readonly _translateService: TranslateService,
-    private readonly _authRepo: AuthRepository,
-    private readonly _route: ActivatedRoute,
-    private readonly _toast: ToastrService,
-    private readonly _router: Router,
-  ) {}
 
   public onSubmit(): void {
     this.form.markAllAsTouched();

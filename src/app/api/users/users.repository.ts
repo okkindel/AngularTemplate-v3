@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import { UserInfoResponse } from './models';
 
 @Injectable()
-export class UserRepository {
+export class UsersRepository {
   private readonly _http = inject(HttpClient);
 
   public getCurrentUserInfo(): Observable<UserInfoResponse> {
